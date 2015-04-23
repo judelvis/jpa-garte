@@ -1,0 +1,50 @@
+@import '../maq/booking/font/font-awesome.css';
+.judSel {
+	padding: 5px;
+	clear: both;
+	position: relative;
+	width: 100%;
+	margin: 0px;
+	height: 51px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: url(gradient3.png) repeat-x center bottom #ffffff;
+}
+.judSel:after {
+  content: '\f002';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font: normal normal 18px 'FontAwesome';
+  color: #ccc;
+  z-index: 3;
+  
+}
+
+.judSel.auto {
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0 -10px 0;
+  line-height: 20px;
+  -webkit-box-shadow: inset 3px 4px 5px 0px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: inset 3px 4px 5px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 3px 4px 5px 0px rgba(0, 0, 0, 0.06);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px #e3e3e3 solid;
+  color: #777777;
+  background: #fff;
+  font: 300 14px/32px "Lato", sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.narrow-selects .judSel{
+  width: 120px;
+}
