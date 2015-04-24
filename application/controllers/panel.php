@@ -101,7 +101,7 @@ class Panel extends CI_Controller {
 		}
 		$data['js'] = 'tipo';
 		$data['formulario'] = 'tipo';
-		$data['titulo']='Tipo De Inmueble';
+		$data['titulo']='Categoria';
 		$this->load->view('panel/incluir/cabecera',$data);
 		$this->load->view('panel/incluir/menu');
 		$this->load->view('panel/principal',$data);
@@ -136,24 +136,22 @@ class Panel extends CI_Controller {
 		$this -> load -> model('panel/mpanel', 'MPanel');
 		$data['js'] = 'serie';
 		$data['titulo'] = 'Serie';
-		$data['formulario'] = 'inmueble';
+		$data['formulario'] = 'serie';
 		//$data['servicios'] = $this -> MPanel -> lista_servicios();
 		$this->load->view('panel/incluir/cabecera',$data);
 		$this->load->view('panel/incluir/menu');
 		$this->load->view('panel/principal',$data);
 	}
 	
-	function registrarInmueble(){
+	function registrarSerie(){
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		$ref = $this -> generaRef();
-		//print_r($_POST);
-		echo $this -> MPanel -> registrarInmueble($_POST,$ref);
+		echo $this -> MPanel -> registrarSerie($_POST);
 	
 	}
 	
-	function listarInmueble(){
+	function listarSerie(){
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> listaInmueble();
+		echo $this -> MPanel -> listaSerie();
 	}
 	
 	function cmbInmuebles(){
@@ -168,16 +166,13 @@ class Panel extends CI_Controller {
 		return $this -> MPanel -> _setCodigoSRand($sCod);
 	}
 	
-	function modificarInmueble(){
+	function modificarSerie(){
 		$ele = json_decode($_POST['objeto'],true);
 		//print_R($_POST);
-		$datos=array("frase"=>$ele[1],"detalle"=>$ele[2],"direc"=>$ele[3],"tama"=>$ele[4],
-				"precio"=>$ele[5],"habita"=>$ele[6],"banos"=>$ele[7],"estaciona"=>$ele[8],"servicios"=>$ele[9],"ubica"=>$ele[10]);
-		if($ele[11] == '0' || $ele[11] == '1'){
-			$datos['estatus']=$ele[11];
-		}
+		$datos=array("descrip"=>$ele[1],"fecha"=>$ele[2],"estatus"=>$ele[3]);
+
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> modificarInmueble($datos,$ele[0]);
+		echo $this -> MPanel -> modificarSerie($datos,$ele[0]);
 	}
 	
 	function eliminarInmueble(){

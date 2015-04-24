@@ -7,15 +7,15 @@ $(function() {
 });
 
 function limpiar(){
-	$("#nomb").val('');
+	$("#categoria").val('');
 }
 
 function Registrar() {
-	var nombre = $("#nomb").val();
+	var nombre = $("#categoria").val();
 	var cadena = new FormData();
-	cadena.append('tipo', nombre);
+	cadena.append('categoria', nombre);
 	if(nombre == ''){
-		alert("Debe ingresar tipo de inmueble");
+		alert("Debe ingresar una categoria");
 		return false;
 	}
 	

@@ -4,65 +4,31 @@
  */
 
 $(function() {
-	listarInmueble();
-	cmbZonas();
-	cmbTipo();
+	listarSerie();
 });
 
 function limpiar(){
-	$("#precio").val('');
-	$("#tama").val('');
-	$("#habita").val('');
-	$("#banos").val('');
-	$("#deta").val('');
-	$("#frase").val('');
-	$("#estado > option[value=0]").attr("selected","selected");
-	$("#tipo > option[value=0]").attr("selected","selected");
-	$("#ciudad").html('');
-	$("#direc").html('');
-	$("#ubica").html('');
+	$("#nombre").val('');
+	$("#descrip").val('');
+	$("#fecha").val('');
 }
 
 function Registrar() {
-	var precio = $("#precio").val();
-	var tama = $("#tama").val();
-	var deta = $("#deta").val();
-	var frase = $("#frase").val();
-	var zona = $("#estado").val();
-	var ciudad = $("#ciudad").val();
-	var tipo = $("#tipo").val();
-	var banos = $("#banos").val();
-	var habita = $("#habita").val();
-	var estaciona = $("#estaciona").val();
-	var cadena = new FormData();
-	var servicios = '';
-	var direc = $("#direc").val();
-	var ubica = $("#ubica").val();
-	$('#box2View option').each(function(){ 
-		servicios += $(this).text() +'|';
-	});
-	
-	cadena.append('precio', precio);
-	cadena.append('tama',tama);
-	cadena.append('detalle',deta);
-	cadena.append('estado', zona);
-	cadena.append('ciudad',ciudad);
-	cadena.append('tipo',tipo);
-	cadena.append('frase',frase);
-	cadena.append('banos',banos);
-	cadena.append('habita',habita);
-	cadena.append('estaciona',estaciona);
-	cadena.append('estatus',1);
-	cadena.append('servicios',servicios);
-	cadena.append('direc',direc);
-	cadena.append('ubica',ubica);
-	if(precio == '' || tama == '' || deta == '' || zona == 0 || ciudad == 0 || tipo == 0 || habita == '' || banos == ''|| estaciona == '' || frase == ''){
+	var nombre = $("#nombre").val();
+	var descrip = $("#descrip").val();
+	var fecha = $("#fecha").val();
+    var cadena = new FormData();
+	cadena.append('nombre', nombre);
+	cadena.append('descrip',descrip);
+	cadena.append('fecha',fecha);
+
+	if(nombre == '' || descrip == '' || fecha == '' ){
 		alert("Debe ingresar todos los datos");
 		return false;
 	}
-	//alert(1);
+
 	$.ajax({
-		url : sUrlP + "registrarInmueble",
+		url : sUrlP + "registrarSerie",
 		type : 'POST',
 		data : cadena,
 		contentType : false,
@@ -71,7 +37,6 @@ function Registrar() {
 		success : function(msj) {
 			alert('Se registro con exito');
 			limpiar();
-			listarInmueble();
 			window.location = sUrlP+"agregarGaleria/"+msj;
 		}
 	});
@@ -79,9 +44,9 @@ function Registrar() {
 	
 }
 
-function listarInmueble(){//alert(sUrlP);
+function listarSerie(){//alert(sUrlP);
 	$.ajax({
-		url : sUrlP + "listarInmueble",
+		url : sUrlP + "listarSerie",
 		type : "POST",
 		dataType : "json",
 		success : function(json) {//alert(json)
@@ -92,7 +57,7 @@ function listarInmueble(){//alert(sUrlP);
 				Grid1.SetName("in");
 				Grid1.SetXls(true);
 				Grid1.Generar();
-			}else $("#reporte").html("No posee inmuebles creados");
+			}else $("#reporte").html("No posee serie creada");
 		}
 	});
 }

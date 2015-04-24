@@ -334,7 +334,7 @@ group by oidi limit 5';
 	 * Funciones para Tipo de inmueble
 	 */
 	function registrarTipo($arr = null) {
-		$ban = $this->db->insert ( 'tipo', $arr );
+		$ban = $this->db->insert ( 'categoria', $arr );
 		if ($ban) {
 			return "Se Registro con Exito";
 		}
@@ -343,13 +343,13 @@ group by oidi limit 5';
 	function cabTipo() {
 		$cabe = array ();
 		$cabe [1] = array ("titulo" => "","oculto" => 1);
-		$cabe [2] = array ("titulo" => "Tipo","atributos" => "width:100%","buscar" => 0);
+		$cabe [2] = array ("titulo" => "Categoria","atributos" => "width:100%","buscar" => 0);
 		
 		return $cabe;
 	}
 	function listaTipo2() {
 		$html = '';
-		$query = 'SELECT * FROM tipo';
+		$query = 'SELECT * FROM categoria';
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
 		$cant = $tipo->num_rows ();
@@ -358,8 +358,8 @@ group by oidi limit 5';
 			$i = 0;
 			$html .= '<ul>';
 			foreach ( $rsTip as $fila ) {
-				$url = site_url ( "principal/buscarTipo/" . $fila->id );
-				$html .= '<li><a href="' . $url . '">' . $fila->tipo . '</a></li>';
+				$url = site_url ( "principal/buscarTipo/" . $fila->oid );
+				$html .= '<li><a href="' . $url . '">' . $fila->categoria . '</a></li>';
 			}
 			$html .= '</ul>';
 		} else {
@@ -368,7 +368,7 @@ group by oidi limit 5';
 		return $html;
 	}
 	function listaTipo() {
-		$query = 'SELECT * FROM tipo';
+		$query = 'SELECT * FROM categoria';
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
 		$cant = $tipo->num_rows ();
@@ -377,7 +377,7 @@ group by oidi limit 5';
 			$i = 0;
 			foreach ( $rsTip as $fila ) {
 				$i ++;
-				$cuep [$i] = array ("1" => $fila->id,"2" => $fila->tipo);
+				$cuep [$i] = array ("1" => $fila->oid,"2" => $fila->categoria);
 			}
 			$obj = array ("Cabezera" => $this->cabTipo (),"Cuerpo" => $cuep,"Paginador" => 5,"Origen" => "json","msj" => 1);
 		} else {
@@ -387,12 +387,12 @@ group by oidi limit 5';
 		return json_encode ( $obj );
 	}
 	function cmbTipo() {
-		$zona = $this->db->query ( 'Select * from tipo' );
+		$zona = $this->db->query ( 'Select * from categoria' );
 		$rs = $zona->result ();
 		$lista = array ();
 		
 		foreach ( $rs as $fila ) {
-			$lista [$fila->id] = $fila->tipo;
+			$lista [$fila->oid] = $fila->categoria;
 		}
 		// $lista[0]='SELECCIONE ZONA';
 		return json_encode ( $lista );
@@ -401,29 +401,26 @@ group by oidi limit 5';
 	/**
 	 * Funciones para Inmueble
 	 */
-	function registrarInmueble($arr = null, $ref) {
-		$cod = $this->completar ( $ref, 8 );
-		$refe = 're-' . $cod;
-		$arr ['refe'] = $refe;
-		$ban = $this->db->insert ( 'inmueble', $arr );
+	function registrarSerie($arr = null) {
+		$ban = $this->db->insert ( 'serie', $arr );
 		
 		if ($ban) {
 			return $this->db->insert_id ();
 		}
 		return "No se pudo registrar";
 	}
-	function modificarInmueble($arr = null, $id) {
+	function modificarSerie($arr = null, $id) {
 		$this->db->where ( 'id', $id );
-		$ban = $this->db->update ( 'inmueble', $arr );
+		$ban = $this->db->update ( 'serie', $arr );
 		if ($ban) {
 			return "Se modifico con exito";
 		}
 		return "No se pudo modificar";
 	}
-	function eliminarInmueble($id) {
-		$ban = $this->db->query ( 'DELETE FROM inmueble where id=' . $id );
+	function eliminarSerie($id) {
+		$ban = $this->db->query ( 'DELETE FROM serie where id=' . $id );
 		if ($ban) {
-			$rs = $this->db->query ( "select * from galeria where oidi=" . $id );
+			$rs = $this->db->query ( "select * from portafolio where oidser=" . $id );
 			$rsG = $rs->result ();
 			foreach ( $rsG as $fila ) {
 				$arr [0] = $fila->oid;
@@ -434,40 +431,23 @@ group by oidi limit 5';
 		}
 		return "No se elimino";
 	}
-	function cabInmu() {
+	function cabSer() {
 		$cabe = array ();
 		$cabe [1] = array ("titulo" => "Id","oculto" => 1);
-		$cabe [2] = array ("titulo" => "Referencia","buscar" => 0);
-		$cabe [3] = array ("titulo" => "Frase","buscar" => 0,'tipo' => 'textArea');
-		$cabe [4] = array ("titulo" => "Detalle","buscar" => 0,'tipo' => 'textArea');
-		$cabe [5] = array ("titulo" => "Estado","buscar" => 0);
-		$cabe [6] = array ("titulo" => "Ciudad","buscar" => 0);
-		$cabe [7] = array ("titulo" => "Direccion","buscar" => 0,'tipo' => 'textArea');
-		$cabe [8] = array ("titulo" => "Tipo");
-		$cabe [9] = array ("titulo" => "Tamaño","tipo"=>"texto");
-		$cabe [10] = array ("titulo" => "Precio","tipo"=>"texto");
-		$cabe [11] = array ("titulo" => "Habitaciones","tipo"=>"texto");
-		$cabe [12] = array ("titulo" => "Baños","tipo"=>"texto");
-		$cabe [13] = array ("titulo" => "Estacionamiento","tipo"=>"texto");
-		$cabe [14] = array ("titulo" => "Servicios","tipo"=>"texto");
-		$cabe [15] = array ("titulo" => "GoogleMaps","tipo"=>"texto_fijo");
-		$cabe [16] = array ("titulo" => "Estatus","tipo"=>"combo_fijo");
-		$cabe [17] = array ("titulo" => "Modificar","tipo" => "bimagen","funcion" => 'modificarInmueble',"parametro" => "1,3,4,7,9,10,11,12,13,14,15,16","ruta" => __IMG__ . "botones/aceptar1.png",
+		$cabe [2] = array ("titulo" => "Titulo","buscar" => 0);
+		$cabe [3] = array ("titulo" => "Descripcion","buscar" => 0 ,"tipo"=>"texto");
+		$cabe [4] = array ("titulo" => "Fecha","buscar" => 0,"tipo"=>"calendario");
+		$cabe [5] = array ("titulo" => "Estatus","tipo"=>"combo_fijo");
+		$cabe [6] = array ("titulo" => "Modificar","tipo" => "bimagen","funcion" => 'modificarSerie',"parametro" => "1,3,4,5","ruta" => __IMG__ . "botones/aceptar1.png",
 				"atributos" => "text-align:center;height:50px;padding:20px;","mantiene" => 1);
-		$cabe [18] = array ("titulo" => "Eliminar","tipo" => "bimagen","funcion" => 'eliminarInmueble',"parametro" => "1","ruta" => __IMG__ . "botones/quitar.png",
+		$cabe [7] = array ("titulo" => "Eliminar","tipo" => "bimagen","funcion" => 'eliminarInmueble',"parametro" => "1","ruta" => __IMG__ . "botones/quitar.png",
 				"atributos" => "text-align:center;height:50px;padding:20px;" );
 		return $cabe;
 	}
-	function listaInmueble() {
-		$cmbEstatus = array ("0" => "Inactivo","1" => "Activo");
-		$cmb = array ("16" => $cmbEstatus);
-		$query = 'SELECT inmueble.id as iid,refe,precio,tama,detalle,if(estatus=1,"Activo","Inactivo")as est,estatus,
-				tipo.tipo as tnom,estado.estado as znom,ciudad.ciudad as cnom,frase,habita,banos,estaciona,servicios,ubica,direc
-				FROM inmueble
-				join tipo on tipo.id = inmueble.tipo
-				join estado on estado.id = inmueble.estado
-				join ciudad on ciudad.id = inmueble.ciudad
-				order by inmueble.id desc ;';
+	function listaSerie() {
+		$cmbEstatus = array ("1" => "Inactivo","0" => "Activo");
+		$cmb = array ("5" => $cmbEstatus);
+		$query = 'SELECT * FROM serie order by modificado desc ;';
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
 		$cant = $tipo->num_rows ();
@@ -477,27 +457,16 @@ group by oidi limit 5';
 			foreach ( $rsTip as $fila ) {
 				$i ++;
 				$cuep [$i] = array (
-						"1" => $fila->iid,
-						"2" => $fila->refe,
-						"3" => $fila->frase.'.',
-						"4" => $fila->detalle.'.',
-						"5" => $fila->znom.'.',
-						"6" => $fila->cnom.'.',
-						"7" => $fila->direc.'.',
-						"8" => $fila->tnom.'.',
-						"9" => $fila->tama.'.',
-						"10" => $fila->precio.'.',
-						"11" => $fila->habita.'.',
-						"12" => $fila->banos.'.',
-						"13" => $fila->estaciona.'.',
-						"14" => $fila->servicios.'.',
-						"15" => $fila->ubica.'.',
-						"16" => $fila->estatus,
-						"17" => '',
-						"18" => '' 
+						"1" => $fila->id,
+						"2" => $fila->nombre,
+						"3" => $fila->descrip.'.',
+						"4" => $fila->fecha.'.',
+						"5" => $fila->estatus.'.',
+						"6" => '',
+						"7" => ''
 				);
 			}
-			$obj = array ("Cabezera" => $this->cabInmu (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => 1,"Objetos" => $cmb);
+			$obj = array ("Cabezera" => $this->cabSer (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => 1,"Objetos" => $cmb);
 		} else {
 			$obj = array ("msj" => 0);
 		}

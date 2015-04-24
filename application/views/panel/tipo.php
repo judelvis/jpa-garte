@@ -17,9 +17,9 @@
 			<div id="div-1" class="accordion-body collapse in body">
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label for="autosize" class="control-label col-lg-2">T.Inmueble</label>
+						<label for="autosize" class="control-label col-lg-2">Categoria</label>
 						<div class="col-lg-8">
-							<input type="text" placeholder="INGRESE TIPO DE INMUEBLE"class="form-control" name="nomb" id="nomb" />
+							<input type="text" placeholder="INGRESE CATEGORIA"class="form-control" name="categoria" id="categoria" />
 						</div>
 						<div class="col-lg-2"><a href="#" class="btn btn-primary btn-lg" onclick="Registrar();">Registrar</a></div>
 					</div>
@@ -35,7 +35,7 @@
 				<div class="icons">
 					<i class="icon-edit"></i>
 				</div>
-				<h5>Tipo De Inmuebles Registrados</h5>
+				<h5>Categorias Registradas</h5>
 				<div class="toolbar">
 					<ul class="nav">
 						<li><a class="accordion-toggle minimize-box"
