@@ -43,10 +43,10 @@
 	<script src="<?php echo __PANEL__;?>plugins/tagsinput/jquery.tagsinput.min.js"></script>
 	<script src="<?php echo __PANEL__;?>plugins/validVal/js/jquery.validVal.min.js"></script>
 	
-	<script src="<?php echo __PANEL__;?>plugins/daterangepicker/daterangepicker.js"></script>
+	<!--<script src="<?php echo __PANEL__;?>plugins/daterangepicker/daterangepicker.js"></script>
 	<script src="<?php echo __PANEL__;?>plugins/daterangepicker/moment.min.js"></script>
 	<script src="<?php echo __PANEL__;?>plugins/datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="<?php echo __PANEL__;?>plugins/timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script src="<?php echo __PANEL__;?>plugins/timepicker/js/bootstrap-timepicker.min.js"></script>!-->
 	
 	<script src="<?php echo __PANEL__;?>plugins/switch/static/js/bootstrap-switch.min.js"></script>
 	<script src="<?php echo __PANEL__;?>plugins/jquery.dualListbox-1.3/jquery.dualListBox-1.3.min.js"></script>
