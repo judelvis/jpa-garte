@@ -134,10 +134,10 @@ class Panel extends CI_Controller {
 			redirect(base_url() . 'index.php/principal');
 		}
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		$data['js'] = 'inmueble';
-		$data['titulo'] = 'Inmueble';
+		$data['js'] = 'serie';
+		$data['titulo'] = 'Serie';
 		$data['formulario'] = 'inmueble';
-		$data['servicios'] = $this -> MPanel -> lista_servicios();
+		//$data['servicios'] = $this -> MPanel -> lista_servicios();
 		$this->load->view('panel/incluir/cabecera',$data);
 		$this->load->view('panel/incluir/menu');
 		$this->load->view('panel/principal',$data);

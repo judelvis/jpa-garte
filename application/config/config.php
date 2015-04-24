@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/jp-inmobiliaria';
+$config['base_url']	= 'http://localhost/jpa-garte';
 
 /*
 |--------------------------------------------------------------------------

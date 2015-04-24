@@ -1,4 +1,4 @@
-var sUrl = 'http://' + window.location.hostname + '/jp-inmobiliaria';
+var sUrl = 'http://' + window.location.hostname + '/jpa-garte';
 var sUrlPa = sUrl + '/index.php/principal/';
 var sUrlP = sUrl + '/index.php/panel/';
 var sImg = sUrl + '/system/img/';
