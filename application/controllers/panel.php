@@ -154,16 +154,10 @@ class Panel extends CI_Controller {
 		echo $this -> MPanel -> listaSerie();
 	}
 	
-	function cmbInmuebles(){
+	function cmbSerie(){
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> cmbInmueble();
+		echo $this -> MPanel -> cmbSerie();
 		//echo "pasa";
-	}
-	
-	function generaRef(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		$sCod = rand(1, 99999);
-		return $this -> MPanel -> _setCodigoSRand($sCod);
 	}
 	
 	function modificarSerie(){
@@ -175,10 +169,10 @@ class Panel extends CI_Controller {
 		echo $this -> MPanel -> modificarSerie($datos,$ele[0]);
 	}
 	
-	function eliminarInmueble(){
+	function eliminarSerie(){
 		$ele = json_decode($_POST['objeto'],true);
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> eliminarInmueble($ele[0]);
+		echo $this -> MPanel -> eliminarSerie($ele[0]);
 	}
 	
 	
@@ -210,7 +204,7 @@ class Panel extends CI_Controller {
 		if(isset($id) && $id !=''){
 			$data['id']=$id;
 		}
-		$data['titulo'] = 'Crear galeria de inmueble';
+		$data['titulo'] = 'Cargar Imagenes a Serie';
 		
 		$this->load->view('panel/incluir/cabecera',$data);
 		$this->load->view('panel/incluir/menu');
@@ -220,11 +214,11 @@ class Panel extends CI_Controller {
 	function registrarGaleria() {
 		$this -> load -> model('utilidades/mimagen', 'MImagen');
 		$this -> load -> model('panel/mpanel', 'MPanel');
-		$oidp = $_POST['codigo'];
 	
 		$valor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/galeria') -> salvar();
 		$nombreImagen = $_FILES['imagen']['name'];
-		if($valor)echo $this -> MPanel -> registrarGaleria($oidp, $nombreImagen);
+        $arr = array("oidcat"=>$_POST['oidcat'],"oidser"=>$_POST['oidser'],"imagen"=>$nombreImagen,"titulo"=>$_POST['titulo'],"detalle"=>$_POST['detalle'],"fecha"=>$_POST['fecha']);
+		if($valor)echo $this -> MPanel -> registrarGaleria($arr);
 		else echo "No se pudo guardar la imagen".$valor['mensaje'];
 		//echo "si";
 	
