@@ -4,6 +4,31 @@
  */
 
 $(function() {
+    $("#fecha").datepicker();
+    $.datepicker.regional['es'] = {
+        closeText : 'Cerrar',
+        prevText : '&#x3c;Ant',
+        nextText : 'Sig&#x3e;',
+        currentText : 'Hoy',
+        monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
+            'Diciembre' ],
+        monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+            'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+        dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Mi&eacute;rcoles',
+            'Jueves', 'Viernes', 'S&aacute;bado' ],
+        dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mi&eacute;', 'Juv', 'Vie',
+            'S&aacute;b' ],
+        dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'S&aacute;' ],
+        weekHeader : 'Sm',
+        dateFormat : 'dd/mm/yy',
+        firstDay : 1,
+        isRTL : false,
+        showMonthAfterYear : false,
+        yearSuffix : ''
+    };
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+    $("#fecha").datepicker("option", "dateFormat", "yy-mm-dd");
 	listarSerie();
 });
 
@@ -53,60 +78,11 @@ function listarSerie(){//alert(sUrlP);
 			if(json['msj']==1){
 				var Grid1 = new TGrid(json, 'reporte','');
 				//Grid1.SetNumeracion(true);
-				Grid1.SetEstilo('tgridh');
+				//Grid1.SetEstilo('tgridh');
 				Grid1.SetName("in");
 				Grid1.SetXls(true);
 				Grid1.Generar();
 			}else $("#reporte").html("No posee serie creada");
-		}
-	});
-}
-
-function cmbZonas() {
-	$.ajax({
-		url : sUrlP + 'cmbZonas',
-		dataType : 'JSON',
-		success : function(json) {//alert(json);
-			$.each(json, function(item, valor) {
-				$("#estado").append(new Option(valor, item, false, true));
-			});
-			$("#estado").append(new Option('Seleccione un Estado', 0, false, true));
-		}
-	});
-}
-
-function cmbTipo() {
-	$.ajax({
-		url : sUrlP + 'cmbTipo',
-		dataType : 'JSON',
-		success : function(json) {//alert(json);
-			$.each(json, function(item, valor) {
-				$("#tipo").append(new Option(valor, item, false, true));
-			});
-			$("#tipo").append(new Option('Seleccione Tipo De Inmueble', 0, false, true));
-		}
-	});
-}
-
-function cmbCiudad() {
-	var zona = $("#estado").val();
-	var cadena = new FormData();
-	cadena.append('zona', zona);
-	//alert(zona);
-	$.ajax({
-		url : sUrlP + 'cmbCiudad',
-		type : 'POST',
-		data : cadena,
-		contentType : false,
-		processData : false,
-		cache : false,
-		dataType : 'JSON',
-		success : function(json) {//alert(json);
-			$("#ciudad").html('');
-			$.each(json, function(item, valor) {
-				$("#ciudad").append(new Option(valor, item, false, true));
-			});
-			$("#ciudad").append(new Option('Seleccione Ciudad', 0, false, true));
 		}
 	});
 }
