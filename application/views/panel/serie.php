@@ -33,15 +33,12 @@
 					</div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-2" >Fecha</label>
-
+                        <label for="autosize" class="control-label col-lg-2">Fecha</label>
                         <div class="col-lg-2">
-                            <div class="input-group input-append date" id="dp3" data-date="2015-02-15"
-                                 data-date-format="yyyy-mm-dd">
-                                <input class="form-control" type="text" value="2014-02-02" readonly="" id="fecha" name="fecha"/>
-                                <span class="input-group-addon add-on"><i class="icon-calendar"></i></span>
-                            </div>
+                            <input type="text" placeholder=""
+                                   class="form-control" name="fecha" id="fecha" />
                         </div>
+
                     </div>
 					<a href="#" class="btn btn-primary btn-lg" onclick="Registrar();">Registrar</a>
 				</form>
