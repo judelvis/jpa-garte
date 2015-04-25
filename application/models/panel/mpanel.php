@@ -28,7 +28,7 @@ class MPanel extends CI_Model {
 	 * funciones para paginas
 	 */
 	function listaRecientes() {
-		$query = 'SELECT * FROM inmueble 
+		$query = 'SELECT * FROM serie
 LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
   			where estatus=1
 order by inmueble.creado desc limit 3';
@@ -148,13 +148,12 @@ group by oidi limit 5';
 	/**
 	 * funciones de galeria
 	 */
-	function registrarGaleria($cod, $nom) {
-		$data = array ("oidi" => $cod,"imagen" => $nom);
-		$this->db->insert ( "galeria", $data );
+	function registrarGaleria($arr) {
+		$this->db->insert ( "portafolio", $arr );
 		return "La imagen se registro correctamente";
 	}
 	function consultarGaleria($cod) {
-		$imagenes = $this->db->query ( 'SELECT * FROM galeria WHERE oidi=' . $cod );
+		$imagenes = $this->db->query ( 'SELECT * FROM portafolio WHERE oidser=' . $cod );
 		$obj = array ();
 		$cant = $imagenes->num_rows ();
 		if ($cant > 0) {
@@ -175,7 +174,7 @@ group by oidi limit 5';
 	}
 	
 	function eliminarGaleria($arr) {
-		if ($this->db->query ( "DELETE FROM galeria WHERE oid=" . $arr [0] )) {
+		if ($this->db->query ( "DELETE FROM portafolio WHERE oid=" . $arr [0] )) {
 			$archivo = BASEPATH . 'img/galeria/' . $arr [1];
 			if (file_exists ( $archivo )) {
 				if (unlink ( $archivo ))
@@ -399,7 +398,7 @@ group by oidi limit 5';
 	}
 	
 	/**
-	 * Funciones para Inmueble
+	 * Funciones para Serie
 	 */
 	function registrarSerie($arr = null) {
 		$ban = $this->db->insert ( 'serie', $arr );
@@ -473,13 +472,13 @@ group by oidi limit 5';
 		
 		return json_encode ( $obj );
 	}
-	function cmbInmueble() {
-		$zona = $this->db->query ( 'Select * from inmueble where estatus=1' );
+	function cmbSerie() {
+		$zona = $this->db->query ( 'Select * from serie where estatus=0' );
 		$rs = $zona->result ();
 		$lista = array ();
 		
 		foreach ( $rs as $fila ) {
-			$lista [$fila->id] = $fila->refe . ' | ' . $fila->frase;
+			$lista [$fila->id] = $fila->nombre;
 		}
 		return json_encode ( $lista );
 	}
@@ -496,35 +495,6 @@ group by oidi limit 5';
 			$html .= '<option value="' . $fila->id . '">' . $fila->servicio . '</option>';
 		}
 		return $html;
-	}
-	
-	/**
-	 * Utilidades
-	 */
-	function _setCodigoSRand($sCod) {
-		$sConsulta = "SELECT cod FROM t_srand WHERE cod='" . $sCod . "' LIMIT 1";
-		$rsC = $this->db->query ( $sConsulta );
-		if ($rsC->num_rows () != 0) {
-			$aux = rand ( 1, 99999 );
-			$C = $this->_setCodigoSRand ( $aux );
-			return $C;
-		} else {
-			$this->db->query ( 'INSERT INTO t_srand (oid, cod) VALUES (NULL, \'' . $sCod . '\');' );
-			return $sCod;
-		}
-	}
-	public function Completar($strCadena = '', $intLongitud = '') {
-		$strContenido = '';
-		$strAux = '';
-		$intLen = strlen ( $strCadena );
-		if ($intLen != $intLongitud) {
-			$intCount = $intLongitud - $intLen;
-			for($i = 0; $i < $intCount; $i ++) {
-				$strAux .= '0';
-			}
-			$strContenido = $strAux . $strCadena;
-		}
-		return $strContenido;
 	}
 }
 ?>
