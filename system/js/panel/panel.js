@@ -4,23 +4,60 @@
  */
 
 $(function() {
-	//$('#notificationModal').modal('show');
-	cmbInmuebles();
-	//consultar();
+	cmbSerie();
+	cmbTipo();
+    $("#fecha").datepicker();
+    $.datepicker.regional['es'] = {
+        closeText : 'Cerrar',
+        prevText : '&#x3c;Ant',
+        nextText : 'Sig&#x3e;',
+        currentText : 'Hoy',
+        monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre',
+            'Diciembre' ],
+        monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+            'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+        dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Mi&eacute;rcoles',
+            'Jueves', 'Viernes', 'S&aacute;bado' ],
+        dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mi&eacute;', 'Juv', 'Vie',
+            'S&aacute;b' ],
+        dayNamesMin : [ 'Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'S&aacute;' ],
+        weekHeader : 'Sm',
+        dateFormat : 'dd/mm/yy',
+        firstDay : 1,
+        isRTL : false,
+        showMonthAfterYear : false,
+        yearSuffix : ''
+    };
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+    $("#fecha").datepicker("option", "dateFormat", "yy-mm-dd");
 });
 
-function cmbInmuebles() {
+function cmbSerie() {
 	//alert(sUrlP);
 	$.ajax({
-		url : sUrlP + 'cmbInmuebles',
+		url : sUrlP + 'cmbSerie',
 		dataType : 'JSON',
 		success : function(json) {
 			$.each(json, function(item, valor) {
-				$("#inmueble").append(new Option(item+' | '+valor, item, false, true));
+				$("#serie").append(new Option(item+' | '+valor, item, false, true));
 			});
-			$("#inmueble").append(new Option('Seleccione Inmueble', 0, false, true));
+			$("#serie").append(new Option('Seleccione Serie', 0, false, true));
 		}
 	});
+}
+
+function cmbTipo() {
+    $.ajax({
+        url : sUrlP + 'cmbTipo',
+        dataType : 'JSON',
+        success : function(json) {//alert(json);
+            $.each(json, function(item, valor) {
+                $("#categoria").append(new Option(valor, item, false, true));
+            });
+            $("#categoria").append(new Option('Seleccione Categoria', 0, false, true));
+        }
+    });
 }
 
 function registrar() {
@@ -30,11 +67,15 @@ function registrar() {
 	var cadena = new FormData();
 
 	cadena.append('imagen', imagen);
-	cadena.append('codigo', $('#inmueble').val());
+	cadena.append('oidser', $('#serie').val());
+    cadena.append('oidcat', $('#serie').val());
+    cadena.append('titulo', $('#titulo').val());
+    cadena.append('detalle', $('#detalle').val());
+    cadena.append('fecha', $('#fecha').val());
 	
-	if($('#inmueble').val() == 0){
+	if($('#serie').val() == 0){
 		
-		alert('Debe elegir un inmueble');
+		alert('Debe elegir una serie');
 		
 		return false;
 	}
