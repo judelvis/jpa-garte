@@ -104,7 +104,7 @@ function consultar(){//alert(1);
 	var cadena = new FormData();
 	$("#imagenes").html('');
 	$("#reporte").html('');
-	cadena.append('codigo', $('#inmueble').val());
+	cadena.append('codigo', $('#serie').val());
 	//alert($('#inmueble').val());
 	$.ajax({
 		url : sUrlP + "consultarGaleria",
