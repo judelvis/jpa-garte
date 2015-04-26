@@ -48,7 +48,7 @@ from portafolio
 join serie on serie.id = portafolio.oidser
 where estatus=0
 group by oidser limit 5';
-		if($oid != null) $query = 'SELECT * FROM portafolio where oid='.$oid ;
+		if($oid != null) $query = 'SELECT * FROM portafolio where oidser='.$oid ;
 		$rec = $this->db->query ( $query );
 		$lista = array ();
 		if ($rec->num_rows () > 0)
@@ -59,7 +59,7 @@ group by oidser limit 5';
 	}
 	function buscarTipo($tipo) {
 		$query = 'SELECT * FROM serie
-  		LEFT join (select * from portafolio group by oidser order by modificado desc  )as A on serie.id = A.oidser
+  		LEFT join (select * from portafolio group by oidser,oidcat order by modificado desc  )as A on serie.id = A.oidser
   		where estatus=0 and oidcat=' . $tipo;
 		$rec = $this->db->query ( $query );
 		$lista = array ();
@@ -153,8 +153,8 @@ group by oidser limit 5';
 		$this->db->insert ( "portafolio", $arr );
 		return "La imagen se registro correctamente";
 	}
-	function consultarGaleria($cod) {
-		$imagenes = $this->db->query ( 'SELECT * FROM portafolio WHERE oidser=' . $cod );
+	function consultarGaleria($cod,$cat) {
+		$imagenes = $this->db->query ( 'SELECT * FROM portafolio WHERE oidser=' . $cod.' and oidcat='.$cat );
 		$obj = array ();
 		$cant = $imagenes->num_rows ();
 		if ($cant > 0) {
@@ -165,7 +165,7 @@ group by oidser limit 5';
 				$i ++;
 				$rImg = '<img src="' . __IMG__ . 'galeria/' . $fila->imagen . '" width=200></img> ';
 				// $rImg = "epa";
-				$cuep [$i] = array ("1" => $fila->oid,"2" => $fila->imagen,"3" => "","4" => $rImg);
+				$cuep [$i] = array ("1" => $fila->oid,"2" => $fila->imagen,"3" => $fila->oidcat,"4" => $fila->oidser,"5" => "","6" => $rImg);
 			}
 			$obj = array ("Cabezera" => $this->cab (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => "SI");
 		} else {
@@ -193,9 +193,12 @@ group by oidser limit 5';
 		$cabe = array ();
 		$cabe [1] = array ("titulo" => "","oculto" => 1);
 		$cabe [2] = array ("titulo" => "Imagen","atributos" => "width:30%;","buscar" => 0);
-		$cabe [3] = array ("titulo" => "#","tipo" => "bimagen","funcion" => 'eliminarGaleria',"parametro" => "1,2",	"ruta" => __IMG__ . "quitar.png",
+        $cabe [3] = array ("titulo" => "Categoria");
+        $cabe [4] = array ("titulo" => "Serie");
+		$cabe [5] = array ("titulo" => "#","tipo" => "bimagen","funcion" => 'eliminarGaleria',"parametro" => "1,2",	"ruta" => __IMG__ . "quitar.png",
 				"atributos" => "text-align:center;" );
-		$cabe [4] = array ("titulo" => "Ver","atributos" => "width:40%");
+		$cabe [6
+        ] = array ("titulo" => "Ver","atributos" => "width:40%");
 		return $cabe;
 	}
 	

@@ -83,7 +83,7 @@
 									<h4>'.$ls->descrip.'</h4>
 									</div>
 									<br>
-									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id ) . '"> <span>Ver Serie</span> </a>
+									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id.'/'.$tipo ) . '"> <span>Ver Serie</span> </a>
 									<div class="clearfix"></div>
 									</div>
 									</div>

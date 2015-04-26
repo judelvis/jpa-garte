@@ -41,12 +41,14 @@ class MImagen extends CI_Model {
 	}
 	
 	
-	function busca_imagenes($oidi) {
+	function busca_imagenes($oidi,$cat) {
 		$this->load->database ();
 		$obj = array ();
 		$imagenes = array ();
 		$obser = array ();
-		$consulta = $this->db->query ( "SELECT * FROM galeria where oidi=" . $oidi );
+        $categoria = '';
+        if($cat !=0 ) $categoria = ' and oidcat='.$cat;
+		$consulta = $this->db->query ( "SELECT * FROM portafolio where oidser=" . $oidi . $categoria );
 		// print("<pre>");
 		// print_R($consulta -> result());
 		$rsConsulta = $consulta->result ();
@@ -60,12 +62,7 @@ class MImagen extends CI_Model {
 			}
 			$obj ['imagenes'] = $imagenes;
 		}
-		$query = 'SELECT inmueble.id as idinmu,refe,precio,tama,ubica,detalle,
-estado.estado as znomb,ciudad.ciudad as cnomb,tipo.tipo as tnomb,servicios,banos,habita,estaciona,ubica,direc
-  	FROM inmueble
-  	join estado on estado.id=inmueble.estado
-  	join ciudad on ciudad.id=inmueble.ciudad
-  	join tipo on tipo.id=inmueble.tipo where inmueble.id=' . $oidi;
+		$query = 'SELECT * from serie where id=' . $oidi;
 		$consulta = $this->db->query ( $query );
 		$obj ['datos'] = $consulta->result ();
 		unset ( $this->db );

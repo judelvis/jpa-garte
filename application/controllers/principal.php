@@ -25,6 +25,7 @@ class Principal extends CI_Controller {
 		$data ['tb'] = 'Mas Recientes';
 		$data ['js'] = 'principal';
 		$data ['jss'] = 'slp';
+        $data['tipo'] = 0;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
 		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
@@ -54,6 +55,7 @@ class Principal extends CI_Controller {
 		$data ['tb'] = 'Busqueda Por Categoria';
 		$data ['js'] = 'principal';
 		$data ['jss'] = 'slp';
+        $data['tipo'] = $tipo;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
 		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
@@ -157,24 +159,24 @@ class Principal extends CI_Controller {
 	/**
 	 * funciones paginas
 	 */
-	function busca_imagenes($oidp = null) {
+	function busca_imagenes($oidp = null,$cat) {
 		$this->load->model ( 'utilidades/mimagen', 'MImagen' );
 		if (isset ( $_POST ['oidp'] ))
 			$oidp = $_POST ['oidp'];
-		return $this->MImagen->busca_imagenes ( $oidp );
+		return $this->MImagen->busca_imagenes ( $oidp,$cat );
 		// echo $oidp;
 	}
-	function galeria2($oid) {
+	function galeria2($oid,$cat) {
 		$this->load->model ( 'panel/mpanel', 'MPanel' );
 		$data ['js'] = 'detalle';
-		$data ['lst'] = $this->busca_imagenes ( $oid );
+		$data ['lst'] = $this->busca_imagenes ( $oid,$cat );
 		$data ['slider'] = $this ->MPanel-> sliderP($oid);
 		$data ['tit'] = 'Detalle';
 		$data ['tb'] = 'Detalle';
 		$data ['js'] = 'principal';
 		$data ['jss'] = 'sld';
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
+		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/detalle', $data );
