@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="<?php echo __PANEL__;?>plugins/tagsinput/jquery.tagsinput.css" />
 <!--<link rel="stylesheet" href="<?php echo __PANEL__;?>plugins/daterangepicker/daterangepicker-bs3.css" />
 <link rel="stylesheet" href="<?php echo __PANEL__;?>plugins/datepicker/css/datepicker.css" />
-<link rel="stylesheet" href="<?php echo __PANEL__;?>plugins/timepicker/css/bootstrap-timepicker.min.css" />!-->s
+<link rel="stylesheet" href="<?php echo __PANEL__;?>plugins/timepicker/css/bootstrap-timepicker.min.css" />!-->
 <link rel="stylesheet" href="<?php echo __PANEL__;?>plugins/switch/static/stylesheets/bootstrap-switch.css" />
 <link rel="stylesheet" href="<?php echo __PANEL__;?>css/bootstrap-fileupload.min.css" />
 
