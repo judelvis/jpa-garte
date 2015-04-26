@@ -68,7 +68,6 @@ function registrar() {
 	var archivoImagen = document.getElementById("imagen");
 	var imagen = archivoImagen.files[0];
 	var cadena = new FormData();
-    alert(imagen);return false;
 
 	cadena.append('imagen', imagen);
 	cadena.append('oidser', $('#serie').val());
