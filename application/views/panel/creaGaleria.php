@@ -56,8 +56,8 @@
                     </div>
 
 					<div class="form-group">
-						<label class="control-label col-lg-4">Seleccione Imagen</label>
-						<div class="col-lg-8">
+						<label class="control-label col-lg-2">Seleccione Imagen</label>
+						<div class="col-lg-4">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail"
 									style="width: 200px; height: 150px;">
@@ -75,6 +75,12 @@
 								</div>
 							</div>
 						</div>
+
+                        <label for="autosize" class="control-label col-lg-2">Enlace</label>
+                        <div class="col-lg-4">
+                            <input type="text" placeholder="Enlace" class="form-control"
+                                   name="enlace" id="enlace"  />
+                        </div>
 					</div>
 					<!-- <a href="#" class="btn btn-primary btn-lg" onclick="registrar();">Registrar</a> -->
 					<div class="panel-body">
