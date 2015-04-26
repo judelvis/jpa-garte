@@ -29,9 +29,9 @@ class MPanel extends CI_Model {
 	 */
 	function listaRecientes() {
 		$query = 'SELECT * FROM serie
-LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-  			where estatus=1
-order by inmueble.creado desc limit 3';
+LEFT join (select * from portafolio group by oidser order by modificado desc  )as A on serie.id = A.oidser
+  			where estatus=0
+order by serie.modificado desc limit 3';
 		$rec = $this->db->query ( $query );
 		$lista = array ();
 		if ($rec->num_rows () > 0)
@@ -41,13 +41,14 @@ order by inmueble.creado desc limit 3';
 		$lista ['query'] = '';
 		return $lista;
 	}
+
 	function sliderP($oid=null) {
 		$query = 'select * 
-from galeria 
-join inmueble on inmueble.id = galeria.oidi
-where estatus=1
-group by oidi limit 5';
-		if($oid != null) $query = 'SELECT * FROM galeria where oidi='.$oid ;
+from portafolio
+join serie on serie.id = portafolio.oidser
+where estatus=0
+group by oidser limit 5';
+		if($oid != null) $query = 'SELECT * FROM portafolio where oid='.$oid ;
 		$rec = $this->db->query ( $query );
 		$lista = array ();
 		if ($rec->num_rows () > 0)
@@ -57,16 +58,16 @@ group by oidi limit 5';
 		return $lista;
 	}
 	function buscarTipo($tipo) {
-		$query = 'SELECT * FROM inmueble
-  		LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-  		where estatus=1 and tipo=' . $tipo;
+		$query = 'SELECT * FROM serie
+  		LEFT join (select * from portafolio group by oidser order by modificado desc  )as A on serie.id = A.oidser
+  		where estatus=0 and oidcat=' . $tipo;
 		$rec = $this->db->query ( $query );
 		$lista = array ();
 		if ($rec->num_rows () > 0)
 			$lista ['lst'] = $rec->result ();
 		else
 			$lista ['lst'] = 0;
-		$lista ['query'] = ' and tipo=' . $tipo;
+		$lista ['query'] = ' and oidcat=' . $tipo;
 		return $lista;
 	}
 	function buscarCiudad($id) {
