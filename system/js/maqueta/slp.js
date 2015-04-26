@@ -13,5 +13,5 @@ $(document).ready(function() {
 		onLoaded : function() {
 			$('.slider-wrapper')[0].style.height = 'auto';
 		}
-	});	
+	});
 });
