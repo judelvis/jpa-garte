@@ -72,6 +72,7 @@ function registrar() {
     cadena.append('titulo', $('#titulo').val());
     cadena.append('detalle', $('#detalle').val());
     cadena.append('fecha', $('#fecha').val());
+    cadena.append('enlace', $('#enlace').val());
 	
 	if($('#serie').val() == 0){
 		
