@@ -71,19 +71,19 @@
 									echo '
 									<div class="grid_3">
 									<div class="box1">
-									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="' . site_url ( "principal/galeria2/" . $ls->id ) . '">algo</a></h4>
+									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="' . site_url ( "principal/galeria2/" . $ls->id ) . '">'.$ls->nombre.'</a></h4>
 									<img class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt=""  />
 									<div class="info wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">
-									<span class="first">Ref: <span class="highlighted">rege</span></span>
-									<span class="second">Tamaño: <span class="highlighted">MT2</span></span>
+									<span class="first">Fecha: <span class="highlighted">'.$ls->fecha.'</span></span>
 									<div class="clearfix"></div>
 									</div>
 									<div class="info2 wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
 									<div class="price">
-									<span class="first">Precio:</span>
-									<h4>algo</h4>
+									<span class="first">Descripcion:</span>
+									<h4>'.$ls->descrip.'</h4>
 									</div>
-									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id ) . '"> <span>Detalles</span> </a>
+									<br>
+									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id ) . '"> <span>Ver Serie</span> </a>
 									<div class="clearfix"></div>
 									</div>
 									</div>
