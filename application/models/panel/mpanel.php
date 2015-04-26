@@ -440,7 +440,7 @@ group by oidser limit 5';
 		$cabe [5] = array ("titulo" => "Estatus","tipo"=>"combo_fijo");
 		$cabe [6] = array ("titulo" => "Modificar","tipo" => "bimagen","funcion" => 'modificarSerie',"parametro" => "1,3,4,5","ruta" => __IMG__ . "botones/aceptar1.png",
 				"atributos" => "text-align:center;height:50px;padding:20px;","mantiene" => 1);
-		$cabe [7] = array ("titulo" => "Eliminar","tipo" => "bimagen","funcion" => 'eliminarInmueble',"parametro" => "1","ruta" => __IMG__ . "botones/quitar.png",
+		$cabe [7] = array ("titulo" => "Eliminar","tipo" => "bimagen","funcion" => 'eliminarSerie',"parametro" => "1","ruta" => __IMG__ . "botones/quitar.png",
 				"atributos" => "text-align:center;height:50px;padding:20px;" );
 		return $cabe;
 	}

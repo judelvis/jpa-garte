@@ -6,7 +6,10 @@
 $(function() {
 	cmbSerie();
 	cmbTipo();
-    $("#fecha").datepicker();
+    $("#fecha").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
     $.datepicker.regional['es'] = {
         closeText : 'Cerrar',
         prevText : '&#x3c;Ant',
