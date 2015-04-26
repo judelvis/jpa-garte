@@ -71,7 +71,7 @@ function registrar() {
 
 	cadena.append('imagen', imagen);
 	cadena.append('oidser', $('#serie').val());
-    cadena.append('oidcat', $('#serie').val());
+    cadena.append('oidcat', $('#categoria').val());
     cadena.append('titulo', $('#titulo').val());
     cadena.append('detalle', $('#detalle').val());
     cadena.append('fecha', $('#fecha').val());
