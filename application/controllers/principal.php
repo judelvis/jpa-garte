@@ -26,7 +26,7 @@ class Principal extends CI_Controller {
 		$data ['js'] = 'principal';
 		$data ['jss'] = 'slp';
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
+		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/principal', $data );
@@ -50,12 +50,12 @@ class Principal extends CI_Controller {
 		$data ['lst'] = $busqueda['lst'];
 		$data ['consulta'] = $busqueda ['query'];
 		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tit'] = 'Tipo Inmueble';
-		$data ['tb'] = 'Busqueda Por Tipo De Inmueble';
+		$data ['tit'] = 'Categoria';
+		$data ['tb'] = 'Busqueda Por Categoria';
 		$data ['js'] = 'principal';
 		$data ['jss'] = 'slp';
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
+		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/principal', $data );

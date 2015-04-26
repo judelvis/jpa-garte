@@ -16,8 +16,9 @@
 					<ul class="sf-menu">
 						<li class="current"><a href="<?php echo site_url("principal") ?>">Principal</a>
 						</li>
-						<li><a href="#">Inmuebles</a> <?php echo $lstTipo;?></li>
-						<li><a href="#">Servicios</a></li>
+						<li><a href="#">Categoria</a> <?php echo $lstTipo;?></li>
+						<li><a href="#">Biografia</a></li>
+                        <li><a href="#">Noticias</a></li>
 						<li><a href="<?php echo site_url("principal/contacto")?>">Contactenos</a>
 						</li>
 					</ul>

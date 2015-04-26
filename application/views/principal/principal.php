@@ -71,17 +71,17 @@
 									echo '
 									<div class="grid_3">
 									<div class="box1">
-									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="' . site_url ( "principal/galeria2/" . $ls->id ) . '">' . $ls->frase . '</a></h4>
+									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="' . site_url ( "principal/galeria2/" . $ls->id ) . '">algo</a></h4>
 									<img class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt=""  />
 									<div class="info wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">
-									<span class="first">Ref: <span class="highlighted">' . $ls->refe . '</span></span>
-									<span class="second">Tamaño: <span class="highlighted">' . $ls->tama . ' MT2</span></span>
+									<span class="first">Ref: <span class="highlighted">rege</span></span>
+									<span class="second">Tamaño: <span class="highlighted">MT2</span></span>
 									<div class="clearfix"></div>
 									</div>
 									<div class="info2 wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
 									<div class="price">
 									<span class="first">Precio:</span>
-									<h4>' . number_format ( $ls->precio, 2 ) .' ' .__MONEDA__.'</h4>
+									<h4>algo</h4>
 									</div>
 									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id ) . '"> <span>Detalles</span> </a>
 									<div class="clearfix"></div>

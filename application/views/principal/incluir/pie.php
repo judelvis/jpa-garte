@@ -1,13 +1,4 @@
 <footer id="footer">
-	<div class="width-wrapper width-wrapper__inset1 width-wrapper__inset2">
-		<div class="wrapper4">
-			<div class="container">
-				<div class="row">
-					<?php echo $lstEstados;?>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="wrapper5">
 		<div class="width-wrapper width-wrapper__inset1 width-wrapper__inset3">
 			<div class="container">
