@@ -125,7 +125,7 @@ class Panel extends CI_Controller {
 	}
 	
 	/**
-	 * Funciones para modulo inmueble
+	 * Funciones para modulo serie
 	 */
 	
 	function principal(){
@@ -217,7 +217,7 @@ class Panel extends CI_Controller {
 	
 		$valor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/galeria') -> salvar();
 		$nombreImagen = $_FILES['imagen']['name'];
-        $arr = array("oidcat"=>$_POST['oidcat'],"oidser"=>$_POST['oidser'],"imagen"=>$nombreImagen,"titulo"=>$_POST['titulo'],"detalle"=>$_POST['detalle'],"fecha"=>$_POST['fecha']);
+        $arr = array("oidcat"=>$_POST['oidcat'],"oidser"=>$_POST['oidser'],"imagen"=>$nombreImagen,"titulo"=>$_POST['titulo'],"detalle"=>$_POST['detalle'],"fecha"=>$_POST['fecha'],"enlace"=>$_POST['enlace']);
 		if($valor)echo $this -> MPanel -> registrarGaleria($arr);
 		else echo "No se pudo guardar la imagen".$valor['mensaje'];
 		//echo "si";
