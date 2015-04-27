@@ -230,6 +230,11 @@ class Panel extends CI_Controller {
 		echo $this -> MPanel -> consultarGaleria($oidp);
 		//echo "si";
 	}
+
+    function mostrarSerie(){
+        print("<pre>");
+        print_r($_POST);
+    }
 	
 	function eliminarGaleria() {
 		$this -> load -> model('panel/mpanel', 'MPanel');

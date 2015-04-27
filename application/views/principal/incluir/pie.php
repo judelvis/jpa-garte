@@ -20,7 +20,7 @@
 	</div>
 </footer>
 <link rel="stylesheet" href="<?php echo __CSS__;?>combo.css">
-		
+<link href="<?php echo __PANEL__;?>css/jquery-ui.css" rel="stylesheet" />
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/animate.css">
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/fonts.googleapis.com/css%3Ffamily=Lato:400.css">

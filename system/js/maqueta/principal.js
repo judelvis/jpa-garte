@@ -196,6 +196,18 @@ $(function() {
 			})
 		}
 	}
+
+    $("#div-slider").dialog({autoOpen: false,
+        width: 600, // overcomes width:'auto' and maxWidth bug
+        height: 300,
+        maxWidth: 600,
+        modal: true,
+        fluid: true, //new option
+        resizable: false,
+        open: function(event, ui){
+            fluidDialog(); // needed when autoOpen is set to true in this codepen
+        }
+    });
 });
 var ua = navigator.userAgent.toLocaleLowerCase(), regV = /ipod|ipad|iphone/gi, result = ua
 		.match(regV), userScale = "";
@@ -203,3 +215,52 @@ if (!result) {
 	userScale = ",user-scalable=0"
 }
 document.write('<meta name="viewport" content="width=device-width,initial-scale=1.0'+ userScale + '">')
+
+
+function muestra(){
+    $("#div-slider").load(sUrlP+"mostrarSerie",{oidser:'primer valor', oidcat:'segundo valor'}, function(response, status, xhr) {
+        alert(response);
+    });
+    $('#div-slider').dialog('open');
+}
+
+$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+    fluidDialog();
+});
+
+// remove window resize namespace
+$(document).on("dialogclose", ".ui-dialog", function (event, ui) {
+    $(window).off("resize.responsive");
+});
+
+function fluidDialog() {
+    var $visible = $(".ui-dialog:visible");
+    // each open dialog
+    $visible.each(function () {
+        var $this = $(this);
+        var dialog = $this.find(".ui-dialog-content").data("dialog");
+        // if fluid option == true
+        if (dialog.options.maxWidth && dialog.options.width) {
+            // fix maxWidth bug
+            $this.css("max-width", dialog.options.maxWidth);
+            //reposition dialog
+            dialog.option("position", dialog.options.position);
+        }
+
+        if (dialog.options.fluid) {
+            // namespace window resize
+            $(window).on("resize.responsive", function () {
+                var wWidth = $(window).width();
+                // check window width against dialog width
+                if (wWidth < dialog.options.maxWidth + 50) {
+                    // keep dialog from filling entire screen
+                    $this.css("width", "90%");
+
+                }
+                //reposition dialog
+                dialog.option("position", dialog.options.position);
+            });
+        }
+
+    });
+}

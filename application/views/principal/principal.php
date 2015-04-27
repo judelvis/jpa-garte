@@ -63,6 +63,7 @@
 									</div>
 									<br>
 									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id.'/'.$tipo ) . '"> <span>Ver Serie</span> </a>
+									<a class="btn-default" onclick="muestra();"> <span>Ver</span> </a>
 									<div class="clearfix"></div>
 									</div>
 									</div>
@@ -94,3 +95,4 @@
 		</div>
 	</div>
 </section>
+<div id="div-slider">HOLA ACA esta</div>
