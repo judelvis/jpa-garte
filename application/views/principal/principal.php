@@ -4,32 +4,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="grid_3">
-						<div id="tabs">
-							<div class="row">
-								<div class="grid_3">
-									<ul class="tabs-list">
-										<li><a href="#tabs-1">
-												<div class="tab tab-first maxheight">BUSCADOR</div>
-										</a>
-										</li>
-										<li><a href="#tabs-2">
-												<div class="tab maxheight">ORDENAR</div>
-										</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div id="tabs-1">
-								<?php $this -> load -> view('principal/incluir/buscador');?>
-							</div>
-							<div id="tabs-2">
-								<?php if(isset($consulta)) $this -> load -> view('principal/incluir/orden');?>
-							</div>
-						</div>
+
 						<div class="banner1">
 							<h2 class="wow fadeIn" data-wow-duration="1s"
 								data-wow-delay="0.1s">
-								<a href="#">Nuestros Servicios</a>
+								<a href="#">Lo Nuevo</a>
 							</h2>
 							<p class="wow fadeIn" data-wow-duration="1s"
 								data-wow-delay="0.2s">Lorem ipsum dolor sit amet conse ctetur
@@ -41,7 +20,7 @@
 
 					</div>
 					<div class="grid_9">
-						<?php $this -> load -> view('principal/incluir/slider',$slider);?>
+						<?php //$this -> load -> view('principal/incluir/slider',$slider);?>
 						<div class="wrapper2">
 							<div class="heading1 wow fadeIn" data-wow-duration="1s"
 								data-wow-delay="0.1s" id='tb'>

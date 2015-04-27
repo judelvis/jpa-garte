@@ -24,7 +24,7 @@ class Principal extends CI_Controller {
 		$data ['tit'] = 'Principal';
 		$data ['tb'] = 'Mas Recientes';
 		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
+		$data ['jss'] = 'sld';
         $data['tipo'] = 0;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
 		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
