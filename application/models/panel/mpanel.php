@@ -153,8 +153,8 @@ group by oidser limit 5';
 		$this->db->insert ( "portafolio", $arr );
 		return "La imagen se registro correctamente";
 	}
-	function consultarGaleria($cod,$cat) {
-		$imagenes = $this->db->query ( 'SELECT * FROM portafolio WHERE oidser=' . $cod.' and oidcat='.$cat );
+	function consultarGaleria($cod) {
+		$imagenes = $this->db->query ( 'SELECT * FROM portafolio WHERE oidser=' . $cod );
 		$obj = array ();
 		$cant = $imagenes->num_rows ();
 		if ($cant > 0) {
