@@ -83,7 +83,7 @@ function listarSerie(){//alert(sUrlP);
 				//Grid1.SetNumeracion(true);
 				//Grid1.SetEstilo('tgridh');
 				Grid1.SetName("in");
-				Grid1.SetXls(true);
+				//Grid1.SetXls(true);
 				Grid1.Generar();
 			}else $("#reporte").html("No posee serie creada");
 		}
