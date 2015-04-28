@@ -46,3 +46,5 @@ function include(url){
   document.write('<script src="'+sMaq+url+'"></script>');
   return false ;
 }
+
+function N_Ventana (URL){   window.open(URL,"ventana1","toolbar=0,location=1,menubar=0,scrollbars=1,resizable=1,width=800,height=800")}

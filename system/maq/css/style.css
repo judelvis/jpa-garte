@@ -256,7 +256,7 @@ h6 {
   margin-top: 30px;
 }
 .wrapper1 {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 .wrapper2 {
   padding: 30px 0 61px;
@@ -485,10 +485,10 @@ nav {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  border-top: 6px solid transparent;
+  border-top: 3px solid transparent;
 }
 .sf-menu > li > a:hover {
-  border-top-color: #8ad329;
+  border-top-color: #000;
   color: #000000;
   -webkit-transition: 0.3s all ease;
   transition: 0.3s all ease;
@@ -498,20 +498,20 @@ nav {
   color: #000000;
 }
 .sf-menu .sfHover > a {
-  border-top-color: #8ad329;
+  border-top-color: #000;
 }
 .sf-menu .sfHover > a:after {
   color: #000000;
 }
 .sf-menu > li.current > a {
-  border-top-color: #8ad329;
+  border-top-color: #000;
   color: #000000;
 }
 .sf-menu > li.current > .sf-with-ul:after {
   color: #000000;
 }
 .sf-menu > li.sfHover > a {
-  border-top-color: #8ad329;
+  border-top-color: #000;
   color: #000000;
 }
 .sf-menu a {
@@ -535,7 +535,7 @@ nav {
   background: rgba(51, 51, 51, 0.98);
   text-align: left;
   padding: 19px 0;
-  z-index: 2;
+  z-index: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

@@ -173,6 +173,17 @@ group by oidser limit 5';
 		}
 		return json_encode ( $obj );
 	}
+
+    function consultarGaleriaSerie($arr){
+        $consulta = $this -> db -> query("Select * From portafolio join serie on serie.id = portafolio.oidser WHERE oidcat=".$arr['oidcat']." and oidser=".$arr['oidser'] );
+        $cant = $consulta -> num_rows();
+        if($cant > 0){
+            $porta = $consulta -> result();
+        }else{
+            $porta = 0;
+        }
+        return $porta;
+    }
 	
 	function eliminarGaleria($arr) {
 		if ($this->db->query ( "DELETE FROM portafolio WHERE oid=" . $arr [0] )) {

@@ -3,7 +3,10 @@
 		<div class="wrapper1">
 			<div class="container">
 				<div class="row">
-					<div class="grid_3">
+                    <A name="primero"></A>
+                    <div class="grid_12" id="div-slider"></div>
+                </div>
+					<!--<div class="grid_3">
 
 						<div class="banner1">
 							<h2 class="wow fadeIn" data-wow-duration="1s"
@@ -18,9 +21,9 @@
 								consequat. Duis aute irure dolor in reprehenderit.</p>
 						</div>
 
-					</div>
-					<div class="grid_9">
-						<?php //$this -> load -> view('principal/incluir/slider',$slider);?>
+					</div>!-->
+                    <div class="row">
+					<div class="grid_12">
 						<div class="wrapper2">
 							<div class="heading1 wow fadeIn" data-wow-duration="1s"
 								data-wow-delay="0.1s" id='tb'>
@@ -47,6 +50,8 @@
 										echo '<div class="border-wrapper1 wrapper3 pag'.$j.'"><div class="row">';
 										$i = 1;
 									}
+                                    //print("<pre>");
+                                    //print_r($ls);
 									echo '
 									<div class="grid_3">
 									<div class="box1">
@@ -62,8 +67,8 @@
 									<h4>'.$ls->descrip.'</h4>
 									</div>
 									<br>
-									<a class="btn-default" href="' . site_url ( "principal/galeria2/" . $ls->id.'/'.$tipo ) . '"> <span>Ver Serie</span> </a>
-									<a class="btn-default" onclick="muestra();"> <span>Ver</span> </a>
+
+									<a href="#primero" class="btn-default" onclick="muestra('.$ls->oidser.','.$ls->oidcat.');"> <span>Ver</span> </a>
 									<div class="clearfix"></div>
 									</div>
 									</div>
@@ -94,5 +99,5 @@
 			</div>
 		</div>
 	</div>
+
 </section>
-<div id="div-slider">HOLA ACA esta</div>

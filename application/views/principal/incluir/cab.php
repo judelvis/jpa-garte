@@ -1,10 +1,10 @@
 <body>
-	<header id="header">
+	<header id="">
 		<div class="info wow fadeIn" data-wow-duration="1s"
 			data-wow-delay=".2s">
 			<div class="width-wrapper">
 				<h1>
-					<span class="wrapper"><i class="fa fa-car"></i><strong>EMPRESA</strong>
+					<span class="wrapper"><font color="#000" ><?php echo __TITLE__;?></font>
 					</span>
 				</h1>
 			</div>
@@ -16,7 +16,7 @@
 					<ul class="sf-menu">
 						<li class="current"><a href="<?php echo site_url("principal") ?>">Principal</a>
 						</li>
-						<li><a href="#">Categoria</a> <?php echo $lstTipo;?></li>
+						<li><a href="#">Portafolio</a> <?php echo $lstTipo;?></li>
 						<li><a href="#">Biografia</a></li>
                         <li><a href="#">Noticias</a></li>
 						<li><a href="<?php echo site_url("principal/contacto")?>">Contactenos</a>

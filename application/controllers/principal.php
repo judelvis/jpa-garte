@@ -21,7 +21,7 @@ class Principal extends CI_Controller {
 		$data ['lst'] = $busqueda ['lst'];
 		$data ['consulta'] = $busqueda ['query'];
 		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tit'] = 'Principal';
+		$data ['tit'] = __TITLE__;
 		$data ['tb'] = 'Mas Recientes';
 		$data ['js'] = 'principal';
 		$data ['jss'] = 'sld';
@@ -166,6 +166,22 @@ class Principal extends CI_Controller {
 		return $this->MImagen->busca_imagenes ( $oidp,$cat );
 		// echo $oidp;
 	}
+
+    function mostrarSerie($oidser=null,$oidcat=null){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        //print_R($_POST);
+        if($oidser == null) {
+            $arr = $_POST;
+        }else{
+            $arr['oidser'] = $oidser;
+            $arr['oidcat'] = $oidcat;
+        }
+        $datos['lst'] = $this -> MPanel -> consultarGaleriaSerie($arr);
+        //print("<pre>");
+        //print_R($datos);
+        $this->load->view ( 'principal/galeria', $datos );
+    }
+
 	function galeria2($oid,$cat) {
 		$this->load->model ( 'panel/mpanel', 'MPanel' );
 		$data ['js'] = 'detalle';
