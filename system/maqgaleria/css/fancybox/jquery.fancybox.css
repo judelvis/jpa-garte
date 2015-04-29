@@ -248,10 +248,11 @@
 	visibility: visible;
 }
 
-.fancybox-opened .fancybox-title h4{
+.fancybox-opened .fancybox-title h8{
 	font-size: 24px;
 	font-weight: 300;
 	margin-bottom: 10px;
+    color: #fff;
 }
 
 .fancybox-opened .fancybox-title p{
