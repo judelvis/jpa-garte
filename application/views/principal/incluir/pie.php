@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/grid.css">
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/search.css">
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/contact-form.css">
-<link rel='stylesheet' id='camera-css'  href='<?php echo __CSS__;?>cm/camera.css' type='text/css' media='all'>
+<!--<link rel='stylesheet' id='camera-css'  href='<?php echo __CSS__;?>cm/camera.css' type='text/css' media='all'>!-->
 <link rel="stylesheet" href="<?php echo __MAQ__;?>booking/css/booking.css">
 <link rel="stylesheet" href="<?php echo __MAQ__;?>css/style.css">
 <script	src="<?php echo __MAQ__;?>js/jquery.js"></script>
