@@ -60,7 +60,7 @@ h3 {
 }
 h4 {
   font: 700 17px/32px "Lato", sans-serif;
-  color: #303030;
+  color: blue;
 }
 @media (max-width: 1199px) {
   h4 {
@@ -506,9 +506,11 @@ nav {
 .sf-menu > li.current > a {
   border-top-color: #000;
   color: #000000;
+
 }
 .sf-menu > li.current > .sf-with-ul:after {
   color: #000000;
+    position: fixed;
 }
 .sf-menu > li.sfHover > a {
   border-top-color: #000;
