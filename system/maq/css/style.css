@@ -62,6 +62,9 @@ h4 {
   font: 700 17px/32px "Lato", sans-serif;
   color: blue;
 }
+.titulo-galeria h4 {
+    color:#fff;
+}
 @media (max-width: 1199px) {
   h4 {
     font-size: 16px;
@@ -510,7 +513,6 @@ nav {
 }
 .sf-menu > li.current > .sf-with-ul:after {
   color: #000000;
-    position: fixed;
 }
 .sf-menu > li.sfHover > a {
   border-top-color: #000;
@@ -560,6 +562,7 @@ nav {
   right: 15px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+
 }
 .sf-menu ul li a {
   display: block;
