@@ -29,9 +29,9 @@ class MPanel extends CI_Model {
 	 */
 	function listaRecientes() {
 		$query = 'SELECT * FROM serie
-LEFT join (select * from portafolio group by oidser order by modificado desc  )as A on serie.id = A.oidser
+LEFT join (select * from portafolio group by oidser order by fecha desc  )as A on serie.id = A.oidser
   			where estatus=0
-order by serie.modificado desc limit 3';
+order by serie.fecha desc limit 3';
 		$rec = $this->db->query ( $query );
 		$lista = array ();
 		if ($rec->num_rows () > 0)
@@ -42,21 +42,6 @@ order by serie.modificado desc limit 3';
 		return $lista;
 	}
 
-	function sliderP($oid=null) {
-		$query = 'select * 
-from portafolio
-join serie on serie.id = portafolio.oidser
-where estatus=0
-group by oidser limit 5';
-		if($oid != null) $query = 'SELECT * FROM portafolio where oidser='.$oid ;
-		$rec = $this->db->query ( $query );
-		$lista = array ();
-		if ($rec->num_rows () > 0)
-			$lista= $rec->result ();
-		else
-			$lista= 0;
-		return $lista;
-	}
 	function buscarTipo($tipo) {
 		$query = 'SELECT * FROM serie
   		LEFT join (select * from portafolio group by oidser,oidcat order by modificado desc  )as A on serie.id = A.oidser
@@ -70,36 +55,11 @@ group by oidser limit 5';
 		$lista ['query'] = ' and oidcat=' . $tipo;
 		return $lista;
 	}
-	function buscarCiudad($id) {
-		$query = 'SELECT * FROM inmueble
-		LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-		where estatus=1 and ciudad=' . $id;
-		$rec = $this->db->query ( $query );
-		$lista = array ();
-		if ($rec->num_rows () > 0)
-			$lista ['lst'] = $rec->result ();
-		else
-			$lista ['lst'] = 0;
-		$lista ['query'] = ' and ciudad=' . $id;
-		return $lista;
-	}
-	function buscarEstado($id) {
-		$query = 'SELECT * FROM inmueble
-		LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-		where estatus=1 and estado=' . $id;
-		$rec = $this->db->query ( $query );
-		$lista = array ();
-		if ($rec->num_rows () > 0)
-			$lista ['lst'] = $rec->result ();
-		else
-			$lista ['lst'] = 0;
-		$lista ['query'] = ' and estado=' . $id;
-		return $lista;
-	}
+
 	function consulta($arr) {
-		$query = 'SELECT * FROM inmueble
-		LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-		where estatus=1 ';
+		$query = 'SELECT * FROM serie
+		LEFT join (select * from portafolio group by oidser order by fecha desc  )as A on serie.id = A.oidser
+		where estatus=0 ';
 		$donde = '';
 		if (isset($arr ['tipo']) && $arr ['tipo'] != 0)	$donde .= ' and tipo=' . $arr ['tipo'];
 		if (isset($arr ['estado']) && $arr ['estado'] != 0)	$donde .= ' and estado=' . $arr ['estado'];
@@ -132,20 +92,7 @@ group by oidser limit 5';
 		$lista ['query'] = $donde;
 		return $lista;
 	}
-	
-	function ordenado($arr) {
-		$query = 'SELECT * FROM inmueble
-		LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-		where estatus=1 ';
-		$query .= $arr ['consulta'] . ' order by ' . $arr ['orden'];
-		$rec = $this->db->query ( $query );
-		$lista = array ();
-		if ($rec->num_rows () > 0)
-			$lista ['lst'] = $rec->result ();
-		$lista ['query'] = $arr ['consulta'];
-		return $lista;
-	}
-	
+
 	/**
 	 * funciones de galeria
 	 */
@@ -175,7 +122,9 @@ group by oidser limit 5';
 	}
 
     function consultarGaleriaSerie($arr){
-        $consulta = $this -> db -> query("Select * From portafolio join serie on serie.id = portafolio.oidser WHERE oidcat=".$arr['oidcat']." and oidser=".$arr['oidser'] );
+        $cat = '';
+        if($arr['oidcat']!=0) $cat =  " and oidcat=".$arr['oidcat'];
+        $consulta = $this -> db -> query("Select * From portafolio join serie on serie.id = portafolio.oidser WHERE  oidser=".$arr['oidser'] . $cat );
         $cant = $consulta -> num_rows();
         if($cant > 0){
             $porta = $consulta -> result();
@@ -212,140 +161,10 @@ group by oidser limit 5';
         ] = array ("titulo" => "Ver","atributos" => "width:40%");
 		return $cabe;
 	}
-	
-	/*
-	 * Funcionas para zona
-	 */
-	function registrarZona($arr = null) {
-		$ban = $this->db->insert ( 'zona', $arr );
-		if ($ban) {
-			return "Se registro con exito";
-		}
-		return "No se pudo registrar";
-	}
-	function cabZona() {
-		$cabe = array ();
-		$cabe [1] = array ("titulo" => "","oculto" => 1);
-		$cabe [2] = array ("titulo" => "Estado","atributos" => "width:100px","buscar" => 0);
-		$cabe [3] = array ("titulo" => "Descripcion","atributos" => "width:100px","buscar" => 0);
-		
-		return $cabe;
-	}
-	function listaZonas() {
-		$zona = $this->db->query ( 'SELECT * FROM estado WHERE pais='.__PAIS__ );
-		$obj = array ();
-		$cant = $zona->num_rows ();
-		if ($cant > 0) {
-			$rsZon = $zona->result ();
-			$i = 0;
-			foreach ( $rsZon as $fila ) {
-				$i ++;
-				$cuep [$i] = array ("1" => $fila->id,"2" => $fila->estado,"3" => $fila->desc);
-			}
-			$obj = array ("Cabezera" => $this->cabZona (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => 1);
-		} else {
-			$obj = array ("msj" => 0);
-		}
-		
-		return json_encode ( $obj );
-	}
-	function listaZonas2() {
-		$zona = $this->db->query ( 'SELECT * FROM estado WHERE pais='.__PAIS__ );
-		$html = '';
-		$cant = $zona->num_rows ();
-		if ($cant > 0) {
-			$rsZon = $zona->result ();
-			$i = 0;
-			$html = '<div class="grid_3"><div class="box2"><h5>Estados</h5><ul class="list1">';
-			foreach ( $rsZon as $fila ) {
-				$i ++;
-				if ($i > 7) {
-					$html .= '</ul></div></div>';
-					$html .= '<div class="grid_3"><div class="box2"><h5>Estados</h5><ul class="list1">';
-					$i = 1;
-				}
-				$url = site_url ( "principal/buscarEstado/" . $fila->id );
-				$html .= '<li class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.' . $i . 's">
-						<a href="' . $url . '">' . $fila->estado . '</a>
-					</li>
-  					
-  					';
-			}
-			$html .= '</ul></div></div>';
-		} else {
-			$html = '';
-		}
-		
-		return $html;
-	}
-	function cmbZonas() {
-		$zona = $this->db->query ( 'Select * from estado WHERE pais='.__PAIS__ );
-		$rs = $zona->result ();
-		$lista = array ();
-		
-		foreach ( $rs as $fila ) {
-			$lista [$fila->id] = $fila->estado;
-		}
-		// $lista[0]='SELECCIONE ZONA';
-		return json_encode ( $lista );
-	}
+
 	
 	/**
-	 * Funciones para ciudad
-	 */
-	function registrarCiudad($arr = null) {
-		$ban = $this->db->insert ( 'ciudad', $arr );
-		if ($ban) {
-			return "Se registro con exito";
-		}
-		return "No se pudo registrar";
-	}
-	function cabCiudad() {
-		$cabe = array ();
-		$cabe [1] = array ("titulo" => "id","oculto" => 0);
-		$cabe [2] = array ("titulo" => "Nombre","atributos" => "width:100px","buscar" => 0);
-		$cabe [3] = array ("titulo" => "Descripcion","atributos" => "width:100px","buscar" => 0);
-		$cabe [4] = array ("titulo" => "Zona","atributos" => "width:100px","buscar" => 0);
-		
-		return $cabe;
-	}
-	function listaCiudad() {
-		$query = 'SELECT ciudad.id as cid,ciudad.desc as cdesc,estado.estado as znombre,ciudad.ciudad as cnombre,pais 
-  			FROM ciudad 
-  			join estado on estado.id=ciudad.estado where pais='.__PAIS__;
-		$zona = $this->db->query ( $query );
-		$obj = array ();
-		$cant = $zona->num_rows ();
-		if ($cant > 0) {
-			$rsZon = $zona->result ();
-			$i = 0;
-			foreach ( $rsZon as $fila ) {
-				$i ++;
-				$ciu = 'N/A';
-				if ($fila->cdesc != '') {
-					$ciu = $fila->cdesc;
-				}
-				$cuep [$i] = array ("1" => $fila->cid,"2" => $fila->cnombre,"3" => $ciu,"4" => $fila->znombre);
-			}
-			$obj = array ("Cabezera" => $this->cabCiudad (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => 1);
-		} else {
-			$obj = array ("msj" => 0);
-		}
-		
-		return json_encode ( $obj );
-	}
-	function cmbCiudad($arr = null) {
-		$ciudad = $this->db->query ( 'Select * from ciudad where estado=' . $arr ['zona'] );
-		$rs = $ciudad->result ();
-		$lista = array ();
-		foreach ( $rs as $fila ) {
-			$lista [$fila->id] = $fila->ciudad;
-		}
-		return json_encode ( $lista );
-	}
-	
-	/**
-	 * Funciones para Tipo de inmueble
+	 * Funciones para Categoria
 	 */
 	function registrarTipo($arr = null) {
 		$ban = $this->db->insert ( 'categoria', $arr );
@@ -408,9 +227,19 @@ group by oidser limit 5';
 		foreach ( $rs as $fila ) {
 			$lista [$fila->oid] = $fila->categoria;
 		}
-		// $lista[0]='SELECCIONE ZONA';
+		//$lista[0]='SELECCIONE ZONA';
 		return json_encode ( $lista );
 	}
+
+    function mostrarTipo($oid){
+        $consulta = $this -> db ->query("SELECT categoria from categoria where oid=".$oid);
+        $resultado = $consulta -> result();
+        $cate = "";
+        foreach($resultado as $resp){
+            $cate = $resp -> categoria;
+        }
+        return $cate;
+    }
 	
 	/**
 	 * Funciones para Serie
@@ -496,20 +325,6 @@ group by oidser limit 5';
 			$lista [$fila->id] = $fila->nombre;
 		}
 		return json_encode ( $lista );
-	}
-	
-	/**
-	 * Funciones para servicios
-	 */
-	function lista_servicios() {
-		$ser = $this->db->query ( 'Select * from servicios' );
-		$rs = $ser->result ();
-		$html = '';
-		
-		foreach ( $rs as $fila ) {
-			$html .= '<option value="' . $fila->id . '">' . $fila->servicio . '</option>';
-		}
-		return $html;
 	}
 }
 ?>

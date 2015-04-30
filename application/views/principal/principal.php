@@ -8,23 +8,7 @@
                         <div class="wrapper2" id="div-slider"></div>
                     </div>
                 </div>
-					<!--<div class="grid_3">
-
-						<div class="banner1">
-							<h2 class="wow fadeIn" data-wow-duration="1s"
-								data-wow-delay="0.1s">
-								<a href="#">Lo Nuevo</a>
-							</h2>
-							<p class="wow fadeIn" data-wow-duration="1s"
-								data-wow-delay="0.2s">Lorem ipsum dolor sit amet conse ctetur
-								adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit.</p>
-						</div>
-
-					</div>!-->
-                    <div class="row">
+                <div class="row">
 					<div class="grid_12">
 						<div class="wrapper2">
 							<div class="heading1 wow fadeIn" data-wow-duration="1s"
@@ -54,23 +38,28 @@
 									}
                                     //print("<pre>");
                                     //print_r($ls);
+                                    /**fecha
+                                     * <div class="info wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">
+                                    <span class="first">Fecha: <span class="highlighted">'.$ls->fecha.'</span></span>
+                                    <div class="clearfix"></div>
+                                    </div>
+                                     */
+                                    $tipoDatos=0;
+                                    if($tipo != 0)$tipoDatos=$ls->oidcat;
 									echo '
 									<div class="grid_4">
 									<div class="box1">
-									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="' . site_url ( "principal/galeria2/" . $ls->id ) . '">'.$ls->nombre.'</a></h4>
+									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">'.$ls->nombre.'</a></h4>
+									<a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">
 									<img class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt=""  />
-									<div class="info wow fadeIn" data-wow-duration="1s" data-wow-delay=".2s">
-									<span class="first">Fecha: <span class="highlighted">'.$ls->fecha.'</span></span>
-									<div class="clearfix"></div>
-									</div>
+									</a>
 									<div class="info2 wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
 									<div class="price">
-									<span class="first">Descripcion:</span>
-									<h4>'.$ls->descrip.'</h4>
+									<span >Descripcion:</span>
+									<span class="first">'.substr($ls->descrip,0,140).'</span>
 									</div>
 									<br>
 
-									<a href="#primero" class="btn-default" onclick="muestra('.$ls->oidser.','.$ls->oidcat.');"> <span>Ver</span> </a>
 									<div class="clearfix"></div>
 									</div>
 									</div>
@@ -92,7 +81,7 @@
 								<a class="btn-big-green wow fadeIn" data-wow-duration="1s"
 									data-wow-delay="0.1s"
 									href="<?php echo site_url("principal/consulta")?>"> <span>Ver
-										Todo</span>
+										Todas Las Series</span>
 								</a>
 							</div>
 						</div>

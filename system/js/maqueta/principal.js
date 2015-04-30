@@ -218,6 +218,7 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 
 function muestra(oidserie,oidcate){
+    //alert(oidserie+"**"+oidcate);
     $("#div-slider").load(sUrlPa+"mostrarSerie",{oidser:oidserie, oidcat:oidcate}, function(response, status, xhr) {
         //alert(response);
     });

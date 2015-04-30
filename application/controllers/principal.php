@@ -20,14 +20,11 @@ class Principal extends CI_Controller {
 		$busqueda = $this->MPanel->listaRecientes ();
 		$data ['lst'] = $busqueda ['lst'];
 		$data ['consulta'] = $busqueda ['query'];
-		$data ['slider'] = $this ->MPanel-> sliderP();
 		$data ['tit'] = __TITLE__;
 		$data ['tb'] = 'Mas Recientes';
 		$data ['js'] = 'principal';
-		$data ['jss'] = 'sld';
         $data['tipo'] = 0;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/principal', $data );
@@ -39,7 +36,6 @@ class Principal extends CI_Controller {
 		$data ['tb'] = 'Contactenos';
 		$data ['js'] = 'principal';
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/contacto', $data );
@@ -50,11 +46,9 @@ class Principal extends CI_Controller {
 		$busqueda = $this->MPanel->buscarTipo ( $tipo );
 		$data ['lst'] = $busqueda['lst'];
 		$data ['consulta'] = $busqueda ['query'];
-		$data ['slider'] = $this ->MPanel-> sliderP();
 		$data ['tit'] = 'Categoria';
-		$data ['tb'] = 'Busqueda Por Categoria';
+		$data ['tb'] = $this -> MPanel -> mostrarTipo($tipo);
 		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
         $data['tipo'] = $tipo;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
 		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
@@ -63,53 +57,18 @@ class Principal extends CI_Controller {
 		$this->load->view ( 'principal/principal', $data );
 		$this->load->view ( 'principal/incluir/pie', $data );
 	}
-	function buscarCiudad($id) {
-		$this->load->model ( 'panel/mpanel', 'MPanel' );
-		$busqueda = $this->MPanel->buscarCiudad ( $id );
-		$data ['lst'] = $busqueda['lst'];
-		$data ['consulta'] = $busqueda ['query'];
-		$data ['tit'] = 'Ciudades';
-		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tb'] = 'Busqueda Por Ciudad';
-		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
-		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
-		$this->load->view ( 'principal/incluir/head', $data );
-		$this->load->view ( 'principal/incluir/cab', $data );
-		$this->load->view ( 'principal/principal', $data );
-		$this->load->view ( 'principal/incluir/pie', $data );
-	}
-	function buscarEstado($id) {
-		$this->load->model ( 'panel/mpanel', 'MPanel' );
-		$busqueda = $this->MPanel->buscarEstado ( $id );
-		$data ['lst'] = $busqueda['lst'];
-		$data ['consulta'] = $busqueda ['query'];
-		$data ['tit'] = 'Estados';
-		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tb'] = 'Busqueda Por Estado';
-		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
-		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
-		$this->load->view ( 'principal/incluir/head', $data );
-		$this->load->view ( 'principal/incluir/cab', $data );
-		$this->load->view ( 'principal/principal', $data );
-		$this->load->view ( 'principal/incluir/pie', $data );
-	}
+
 	function consulta($arr=null) {
 		$this->load->model ( 'panel/mpanel', 'MPanel' );
 		if(isset($_POST))$arr=$_POST;
 		$busqueda = $this->MPanel->consulta ( $arr );
 		$data ['lst'] = $busqueda ['lst'];
 		$data ['consulta'] = $busqueda ['query'];
-		$data ['tit'] = 'Busqueda';
-		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tb'] = 'Busqueda Por Filtro';
+		$data ['tit'] = 'Todas Las Series';
+		$data ['tb'] = 'Todas Las Series';
 		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
+        $data['tipo'] = 0;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/principal', $data );
