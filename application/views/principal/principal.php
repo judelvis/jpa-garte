@@ -4,7 +4,9 @@
 			<div class="container">
 				<div class="row">
                     <A name="primero"></A>
-                    <div class="grid_12" id="div-slider"></div>
+                    <div class="grid_12" >
+                        <div class="wrapper2" id="div-slider"></div>
+                    </div>
                 </div>
 					<!--<div class="grid_3">
 
@@ -53,7 +55,7 @@
                                     //print("<pre>");
                                     //print_r($ls);
 									echo '
-									<div class="grid_3">
+									<div class="grid_4">
 									<div class="box1">
 									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="' . site_url ( "principal/galeria2/" . $ls->id ) . '">'.$ls->nombre.'</a></h4>
 									<img class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt=""  />

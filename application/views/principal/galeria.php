@@ -50,7 +50,7 @@
 <body>
 
 <!-- Our Work Section -->
-<div id="work" class="page">
+<div id="work" class="" style="padding-top: 50px;">
     <div class="container">
         <!-- Title Page -->
         <div class="row">
