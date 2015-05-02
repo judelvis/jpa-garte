@@ -23,7 +23,7 @@ a {
     transition: all 0.3s ease;
 }
 a:hover {
-    color: #8ad329;
+    color: #aaaaaa;
 }
 img {
     max-width: 100%;
@@ -166,16 +166,16 @@ h6 {
     text-transform: uppercase;
     padding: 7px 22px 9px;
     border-radius: 3px;
-    -webkit-box-shadow: 1px 1px 1px 0px #5b8d1a;
-    box-shadow: 1px 1px 1px 0px #5b8d1a;
-    background: url(../images/gradient1.png) repeat-x center bottom #8ad329;
+    -webkit-box-shadow: 1px 1px 1px 0px #000;
+    box-shadow: 1px 1px 1px 0px #aaaaaaa;
+    background: url(../images/gradient2.png) repeat-x center bottom #000;
     border: 1px solid transparent;
     color: #ffffff;
 }
 .btn-big-green:hover {
     color: #303030;
     border: 1px solid #e3e3e3;
-    background: url(../images/gradient3.png) repeat-x center bottom #8ad329;
+    background: url(../images/gradient3.png) repeat-x center bottom #000;
 }
 .btn-big-green span {
     position: relative;
@@ -331,10 +331,10 @@ h6 {
 }
 #header .info .authorization-block .create:hover,
 #header .info .authorization-block .login:hover {
-    color: #8ad329;
+    color: #000;
 }
 #header .info .authorization-block .create {
-    color: #8ad329;
+    color: #000;
 }
 #header .info .authorization-block .create:hover {
     color: #ffffff;
@@ -409,7 +409,7 @@ h1 i {
     font-size: 52px !important;
     line-height: 72px !important;
     text-align: center;
-    background: url(../images/gradient1.png) repeat-x center bottom #8ad329;
+    background: url(../images/gradient2.png) repeat-x center bottom #aaaaaa;
 }
 h1 strong {
     font-weight: 700;
@@ -718,7 +718,7 @@ nav {
 }
 .post1 time {
     font: 400 14px/21px "Lato", sans-serif;
-    color: #68a617;
+    color: #000;
     text-decoration: underline;
     display: block;
     margin-bottom: 7px;
@@ -859,7 +859,7 @@ nav {
 .post2 time {
     margin-top: -7px;
     font-weight: 400;
-    color: #68a617;
+    color: #000;
     text-decoration: underline;
     display: block;
     margin-bottom: 5px;
@@ -940,11 +940,11 @@ nav {
     color: #ffffff;
     text-transform: uppercase;
     text-align: center;
-    background: url(../images/gradient1.png) repeat-x center bottom #8ad329;
+    background: url(../images/gradient2.png) repeat-x center bottom #000;
     border: none;
     padding: 18px 15px 15px;
-    -webkit-box-shadow: 1px 1px 1px 0px #5b8d1a;
-    box-shadow: 1px 1px 1px 0px #5b8d1a;
+    -webkit-box-shadow: 1px 1px 1px 0px #AAAAAA;
+    box-shadow: 1px 1px 1px 0px #AAAAAA;
 }
 .box4 .btn-big:hover {
     color: #303030;

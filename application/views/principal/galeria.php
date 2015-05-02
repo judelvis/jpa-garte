@@ -86,7 +86,7 @@
                                     echo '
                                         <li class="item-thumbs span3 video">
                                         <!-- Fancybox Media - Gallery Enabled - Title - Link to Video -->
-                                            <a class="hover-wrap fancybox-media" data-fancybox-group="video" title="'.$ls -> titulo.'" href="'.$ls->enlace.'">
+                                            <a class="hover-wrap fancybox-media" data-fancybox-group="gallery" title="'.$ls -> titulo.'" href="'.$ls->enlace.'">
                                                 <span class="overlay-img"></span>
                                                 <span class="overlay-img-thumb font-icon-plus"></span>
                                             </a>

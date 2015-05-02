@@ -66,11 +66,17 @@
   height: 41px;
   width: 41px;
   text-align: center;
-  background: url(../images/gradient1.png) repeat-x center bottom #8ad329;
+  background: url(../images/gradient2.png) repeat-x center bottom #000;
   right: 5px;
 }
 #search a:hover .search_icon:before {
-  color: #303030;
+  color: #AAAAAA;
+}
+
+#search a:hover{
+    color: #303030;
+    border: 1px solid #e3e3e3;
+    background: url(../images/gradient3.png) repeat-x center bottom #000;
 }
 #search a > .search_icon {
   position: absolute;

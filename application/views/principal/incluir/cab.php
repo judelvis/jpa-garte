@@ -27,7 +27,7 @@
 					style='width: 320px;'
 					action="<?php echo site_url("principal/consulta2")?>">
 					<input type="text" name="s" / style='width: 100%;'
-						placeholder='Buscar propiedades'> <a
+						placeholder='Buscar Serie'> <a
 						onclick="document.getElementById('search').submit()">
 						<div class="search_icon"></div>
 					</a>
