@@ -84,7 +84,7 @@
                                     ';
                                 }else{
                                     echo '
-                                        <li class="item-thumbs span3 video">
+                                        <li class="item-thumbs span3 dise">
                                         <!-- Fancybox Media - Gallery Enabled - Title - Link to Video -->
                                             <a class="hover-wrap fancybox-media" data-fancybox-group="gallery" title="'.$ls -> titulo.'" href="'.$ls->enlace.'">
                                                 <span class="overlay-img"></span>

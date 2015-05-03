@@ -11,7 +11,12 @@ session_start ();
 class Principal extends CI_Controller {
 	function __construct() {
 		parent::__construct ();
+
 	}
+    function idioma(){
+        $_SESSION['idioma'] = '_i';
+        redirect ( base_url () );
+    }
 	function index() {
 		$this->principal ();
 	}
@@ -51,7 +56,6 @@ class Principal extends CI_Controller {
 		$data ['js'] = 'principal';
         $data['tipo'] = $tipo;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
 		$this->load->view ( 'principal/incluir/cab', $data );
 		$this->load->view ( 'principal/principal', $data );

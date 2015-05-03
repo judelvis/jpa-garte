@@ -46,17 +46,21 @@
                                      */
                                     $tipoDatos=0;
                                     if($tipo != 0)$tipoDatos=$ls->oidcat;
+                                    $tituloSerie = $ls->nombre;$desSerie = $ls->descrip;
+                                    if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
+                                        $tituloSerie = $ls->nombre_i;$desSerie = $ls->descrip_i;
+                                    }
 									echo '
 									<div class="grid_4">
 									<div class="box1">
-									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">'.$ls->nombre.'</a></h4>
+									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">'.$tituloSerie.'</a></h4>
 									<a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">
 									<img class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt=""  />
 									</a>
 									<div class="info2 wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
 									<div class="price">
 									<span >Descripcion:</span>
-									<span class="first">'.substr($ls->descrip,0,140).'</span>
+									<span class="first">'.substr($desSerie,0,140).'</span>
 									</div>
 									<br>
 

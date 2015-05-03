@@ -182,7 +182,8 @@ order by serie.fecha desc limit 3';
 	}
 	function listaTipo2() {
 		$html = '';
-		$query = 'SELECT * FROM categoria';
+		$query = 'SELECT oid,categoria as cate FROM categoria';
+
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
 		$cant = $tipo->num_rows ();
@@ -192,7 +193,7 @@ order by serie.fecha desc limit 3';
 			$html .= '<ul>';
 			foreach ( $rsTip as $fila ) {
 				$url = site_url ( "principal/buscarTipo/" . $fila->oid );
-				$html .= '<li><a href="' . $url . '">' . $fila->categoria . '</a></li>';
+				$html .= '<li><a href="' . $url . '">' . $fila->cate . '</a></li>';
 			}
 			$html .= '</ul>';
 		} else {
