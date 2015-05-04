@@ -33,6 +33,20 @@
 					</div>
 
                     <div class="form-group">
+                        <label for="autosize" class="control-label col-lg-2">Titulo 2</label>
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="Titulo De la Serie"
+                                   class="form-control" name="nombre_i" id="nombre_i" />
+                        </div>
+                        <label for="autosize" class="control-label col-lg-2">Descripcion 2</label>
+
+                        <div class="col-lg-6">
+                            <textarea class="form-control" name="descrip_i" id="descrip_i"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
                         <label for="autosize" class="control-label col-lg-2">Fecha</label>
                         <div class="col-lg-2">
                             <input type="text" placeholder=""
@@ -51,7 +65,7 @@
 				<div class="icons">
 					<i class="icon-edit"></i>
 				</div>
-				<h5>Lista De Inmuebles</h5>
+				<h5>Lista De Series</h5>
 				<div class="toolbar">
 					<ul class="nav">
 						<li><a class="accordion-toggle minimize-box"

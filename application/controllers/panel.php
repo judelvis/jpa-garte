@@ -21,75 +21,8 @@ class Panel extends CI_Controller {
 		$this->load->model('usuario/iniciar', 'Iniciar');
 		$this->Iniciar->validarCuenta($_POST);
 	}
-	
 
-	/**
-	 * Funciones modulo zona
-	 */
-	
-	function zona(){
-		if (!isset($_SESSION['usuario_inmo'])) {
-			session_destroy();
-			redirect(base_url() . 'index.php/principal');
-		}
-		$data['js'] = 'zona';
-		$data['formulario'] = 'zona';
-		$this->load->view('plantilla/cabezera',$data);
-		$this->load->view('panel/incluir/menu');
-		$this->load->view('inicio_panel',$data);
-	}
-	
-	function registrarZona(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> registrarZona($_POST);
-	
-	}
-	
-	function cmbZonas(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> cmbZonas();
-		//echo "pasa";
-	}
-	
-	function listarZonas(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> listaZonas();
-	}
-	
-	/**
-	 * Funciones para modulo ciudad
-	 */
-	
-	function ciudad(){
-		if (!isset($_SESSION['usuario_inmo'])) {
-			session_destroy();
-			redirect(base_url() . 'index.php/principal');
-		}
-		$data['js'] = 'ciudad';
-		$data['titulo'] = 'Ciudades';
-		$data['formulario'] = 'ciudad';
-		$this->load->view('panel/incluir/cabecera',$data);
-		$this->load->view('panel/incluir/menu');
-		$this->load->view('panel/principal',$data);
-	}
-	
-	function registrarCiudad(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> registrarCiudad($_POST);
-	
-	}
-	
-	function listarCiudad(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> listaCiudad();
-	}
-	
-	function cmbCiudad(){
-		$this -> load -> model('panel/mpanel', 'MPanel');
-		echo $this -> MPanel -> cmbCiudad($_POST);
-		//print_r($_POST);
-	}
-	
+
 	/**
 	 * Funciones para modulo tipo
 	 */

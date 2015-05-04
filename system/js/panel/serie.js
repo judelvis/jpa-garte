@@ -38,16 +38,22 @@ $(function() {
 function limpiar(){
 	$("#nombre").val('');
 	$("#descrip").val('');
+    $("#nombre_i").val('');
+    $("#descrip_i").val('');
 	$("#fecha").val('');
 }
 
 function Registrar() {
 	var nombre = $("#nombre").val();
 	var descrip = $("#descrip").val();
+    var nombre_i = $("#nombre_i").val();
+    var descrip_i = $("#descrip_i").val();
 	var fecha = $("#fecha").val();
     var cadena = new FormData();
 	cadena.append('nombre', nombre);
 	cadena.append('descrip',descrip);
+    cadena.append('nombre_i', nombre_i);
+    cadena.append('descrip_i',descrip_i);
 	cadena.append('fecha',fecha);
 
 	if(nombre == '' || descrip == '' || fecha == '' ){

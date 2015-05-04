@@ -77,21 +77,7 @@ order by serie.fecha desc limit 3';
 		$lista ['query'] = $donde;
 		return $lista;
 	}
-	
-	function consulta2($arr){
-		$query = 'SELECT * FROM inmueble
-		LEFT join (select * from galeria group by oidi order by creado desc  )as A on inmueble.id = A.oidi
-		where estatus=1 ';
-		$donde = ' and (frase like "%'.$arr['s'].'%" or refe like "%'.$arr['s'].'%")';
-		$rec = $this->db->query ( $query . $donde );
-		$lista = array ();
-		if ($rec->num_rows () > 0)
-			$lista ['lst'] = $rec->result ();
-		else
-			$lista ['lst'] = 0;
-		$lista ['query'] = $donde;
-		return $lista;
-	}
+
 
 	/**
 	 * funciones de galeria
@@ -283,18 +269,20 @@ order by serie.fecha desc limit 3';
 		$cabe [1] = array ("titulo" => "Id","oculto" => 1);
 		$cabe [2] = array ("titulo" => "Titulo","buscar" => 0);
 		$cabe [3] = array ("titulo" => "Descripcion","buscar" => 0 ,"tipo"=>"texto");
-		$cabe [4] = array ("titulo" => "Fecha","buscar" => 0,"tipo"=>"calendario");
-		$cabe [5] = array ("titulo" => "Estatus","tipo"=>"combo_fijo");
-		$cabe [6] = array ("titulo" => "Modificar","tipo" => "bimagen","funcion" => 'modificarSerie',"parametro" => "1,3,4,5","ruta" => __IMG__ . "botones/aceptar1.png",
+        $cabe [4] = array ("titulo" => "Titulo2");
+        $cabe [5] = array ("titulo" => "Descripcion2","buscar" => 0 ,"tipo"=>"texto");
+		$cabe [6] = array ("titulo" => "Fecha","buscar" => 0,"tipo"=>"calendario");
+		$cabe [7] = array ("titulo" => "Estatus","tipo"=>"combo_fijo");
+		$cabe [8] = array ("titulo" => "Modificar","tipo" => "bimagen","funcion" => 'modificarSerie',"parametro" => "1,3,5,6,7","ruta" => __IMG__ . "botones/aceptar1.png",
 				"atributos" => "text-align:center;height:50px;padding:20px;","mantiene" => 1);
-		$cabe [7] = array ("titulo" => "Eliminar","tipo" => "bimagen","funcion" => 'eliminarSerie',"parametro" => "1","ruta" => __IMG__ . "botones/quitar.png",
+		$cabe [9] = array ("titulo" => "Eliminar","tipo" => "bimagen","funcion" => 'eliminarSerie',"parametro" => "1","ruta" => __IMG__ . "botones/quitar.png",
 				"atributos" => "text-align:center;height:50px;padding:20px;" );
 		return $cabe;
 	}
 	function listaSerie() {
 		$cmbEstatus = array ("1" => "Inactivo","0" => "Activo");
 		$cmb = array ("5" => $cmbEstatus);
-		$query = 'SELECT * FROM serie order by modificado desc ;';
+		$query = 'SELECT * FROM serie order by fecha desc ;';
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
 		$cant = $tipo->num_rows ();
@@ -307,10 +295,12 @@ order by serie.fecha desc limit 3';
 						"1" => $fila->id,
 						"2" => $fila->nombre,
 						"3" => $fila->descrip.'.',
-						"4" => $fila->fecha.'.',
-						"5" => $fila->estatus.'.',
-						"6" => '',
-						"7" => ''
+                    "4" => '',
+                    "5" => '.',
+						"6" => $fila->fecha.'.',
+						"7" => $fila->estatus.'.',
+						"8" => '',
+						"9" => ''
 				);
 			}
 			$obj = array ("Cabezera" => $this->cabSer (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => 1,"Objetos" => $cmb);
