@@ -103,9 +103,9 @@ h6 {
     background: url(../images/gradient4.png) repeat-x center bottom #ffffff;
 }
 .btn-default:hover {
-    -webkit-box-shadow: 1px 1px 1px 0px #5b8d1a;
-    box-shadow: 1px 1px 1px 0px #5b8d1a;
-    background: url(../images/gradient1.png) repeat-x center bottom #8ad329;
+    -webkit-box-shadow: 1px 1px 1px 0px #ffffff;
+    box-shadow: 1px 1px 1px 0px #ffffff;
+    background: url(../images/gradient1.png) repeat-x center bottom #ffffff;
     border: 1px solid transparent;
     color: #ffffff;
 }
@@ -142,17 +142,17 @@ h6 {
     border-left: 1px solid #808080;
 }
 .btn-big:hover {
-    color: #8ad329;
+    color: #ffffff;
 }
 .btn-big:hover .plus {
     background: #ffffff;
-    color: #8ad329;
+    color: #ffffff;
 }
 .btn-big .plus {
     display: inline-block;
     font: 700 37px/32px "Lato", sans-serif;
     border-radius: 200px;
-    background: #8ad329;
+    background: #ffffff;
     text-align: center;
     height: 35px;
     width: 35px;
@@ -478,7 +478,7 @@ nav {
     text-transform: uppercase;
     font: 700 12px/12px "Lato", sans-serif;
     display: block;
-    padding: 19px 30px 27px;
+    padding: 18px 18px 18px;
     -webkit-transition: 0.3s all ease;
     transition: 0.3s all ease;
     color: #000000;
@@ -506,6 +506,7 @@ nav {
 .sf-menu > li.current > a {
     border-top-color: #000;
     color: #000000;
+    height: 10px;
 }
 .sf-menu > li.current > .sf-with-ul:after {
     color: #000000;
@@ -651,7 +652,7 @@ nav {
     border: none;
 }
 #tabs .tabs-list .ui-tabs-active .tab {
-    color: #68a617;
+    color: #ffffff;
     background: #efefef;
 }
 #tabs .tabs-list li {
@@ -687,7 +688,7 @@ nav {
     top: 0;
 }
 #tabs .tab:hover {
-    color: #68a617;
+    color: #ffffff;
 }
 #tabs #tabs-1,
 #tabs #tabs-2 {
@@ -740,7 +741,7 @@ nav {
     margin-bottom: 4px;
 }
 .box1 .info .highlighted {
-    color: #68a617;
+    color: #ffffff;
 }
 .box1 .info .first,
 .box1 .info .second {
@@ -894,7 +895,7 @@ nav {
     background: #e3e3e3;
 }
 .box4 .heading h3 {
-    color: #68a617;
+    color: #ffffff;
 }
 .box4 .content {
     padding: 25px 10px 26px 10px;
@@ -1081,9 +1082,9 @@ nav {
 }
 .box7 .btn-default {
     margin-top: 5px;
-    -webkit-box-shadow: 1px 1px 1px 0px #5b8d1a;
-    box-shadow: 1px 1px 1px 0px #5b8d1a;
-    background: url(../images/gradient1.png) repeat-x center bottom #8ad329;
+    -webkit-box-shadow: 1px 1px 1px 0px #ffffff;
+    box-shadow: 1px 1px 1px 0px #ffffff;
+    background: url(../images/gradient1.png) repeat-x center bottom #ffffff;
     border: 1px solid transparent;
     color: #ffffff;
 }
@@ -1193,7 +1194,7 @@ nav {
 .simple-link {
     display: inline-block;
     text-decoration: underline;
-    color: #68a617;
+    color: #ffffff;
     font-weight: 400;
 }
 /* ======= List 1 ======= */
@@ -1203,7 +1204,7 @@ nav {
     color: #777777;
 }
 .list1 li a:hover {
-    color: #68a617;
+    color: #ffffff;
 }
 .list1 li + li {
     margin-top: 12px;
@@ -1222,7 +1223,7 @@ nav {
     font-weight: normal;
     text-decoration: none;
     cursor: default;
-    color: #68a617;
+    color: #ffffff;
     line-height: 24px;
     content: '\f138';
     left: 0;
@@ -1286,7 +1287,7 @@ nav {
 }
 #toTop:hover {
     outline: none;
-    color: #8ad329;
+    color: #ffffff;
 }
 @media only screen and (max-width: 1199px) {
     #toTop {
