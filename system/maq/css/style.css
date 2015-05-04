@@ -33,7 +33,7 @@ img {
 }
 /* ======= Headers ======= */
 h2 {
-    font: 700 27px/33px "Lato", sans-serif;
+    font: 700 10px/12px "Lato", sans-serif;
     color: #303030;
     text-transform: uppercase;
 }
@@ -259,7 +259,7 @@ h6 {
     padding-top: 0px;
 }
 .wrapper2 {
-    padding: 0px 0 61px;
+    padding: 0px 0 10px;
 }
 .wrapper3 {
     padding-bottom: 26px;
@@ -358,7 +358,7 @@ h6 {
 #header #stuck_container:after {
     background: url(../images/box-shadow1.png) repeat-x center 0;
     width: 100%;
-    height: 31px;
+    height: 11px;
     position: absolute;
     content: '';
     bottom: -31px;
@@ -391,7 +391,7 @@ h6 {
 h1 {
     display: inline-block;
     float: left;
-    font: 100 68px/64px "Lato", sans-serif;
+    font: 100 50px/50px "Lato", sans-serif;
     color: #ffffff;
     letter-spacing: -0.06em;
     text-transform: uppercase;
@@ -476,7 +476,7 @@ nav {
 }
 .sf-menu > li > a {
     text-transform: uppercase;
-    font: 700 18px/18px "Lato", sans-serif;
+    font: 700 12px/12px "Lato", sans-serif;
     display: block;
     padding: 19px 30px 27px;
     -webkit-transition: 0.3s all ease;
