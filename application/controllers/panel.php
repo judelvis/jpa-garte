@@ -96,7 +96,7 @@ class Panel extends CI_Controller {
 	function modificarSerie(){
 		$ele = json_decode($_POST['objeto'],true);
 		//print_R($_POST);
-		$datos=array("descrip"=>$ele[1],"fecha"=>$ele[2],"estatus"=>$ele[3]);
+		$datos=array("descrip"=>$ele[1],"fecha"=>$ele[3],"estatus"=>$ele[4],"descrip_i"=>$ele[2]);
 
 		$this -> load -> model('panel/mpanel', 'MPanel');
 		echo $this -> MPanel -> modificarSerie($datos,$ele[0]);
@@ -150,7 +150,7 @@ class Panel extends CI_Controller {
 	
 		$valor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/galeria') -> salvar();
 		$nombreImagen = $_FILES['imagen']['name'];
-        $arr = array("oidcat"=>$_POST['oidcat'],"oidser"=>$_POST['oidser'],"imagen"=>$nombreImagen,"titulo"=>$_POST['titulo'],"detalle"=>$_POST['detalle'],"fecha"=>$_POST['fecha'],"enlace"=>$_POST['enlace']);
+        $arr = array("oidcat"=>$_POST['oidcat'],"oidser"=>$_POST['oidser'],"imagen"=>$nombreImagen,"titulo"=>$_POST['titulo'],"detalle"=>$_POST['detalle'],"titulo_i"=>$_POST['titulo_i'],"detalle_i"=>$_POST['detalle_i'],"fecha"=>$_POST['fecha'],"enlace"=>$_POST['enlace']);
 		if($valor)echo $this -> MPanel -> registrarGaleria($arr);
 		else echo "No se pudo guardar la imagen".$valor['mensaje'];
 		//echo "si";

@@ -18,7 +18,7 @@
 				<form class="form-horizontal">
 					<div class="form-group">
 						<label for="autosize" class="control-label col-lg-2">Serie</label>
-						<div class="col-lg-4">
+						<div class="col-lg-2">
 							<?php if(isset($id)){?>
 							<input type="text" placeholder="Serie" class="form-control"
 								name="serie" id="serie" value='<?php echo $id;?>' />
@@ -29,35 +29,44 @@
 							<?php }?>
                         </div>
                         <label for="autosize" class="control-label col-lg-2">Categoria</label>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                                 <select data-placeholder="Seleccione categoria"
                                         class="form-control " id='categoria' name='categoria'></select>
 						</div>
+                        <label for="autosize" class="control-label col-lg-2">Fecha</label>
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="Fecha" class="form-control"
+                                   name="fecha" id="fecha"  />
+                        </div>
 					</div>
 
                     <div class="form-group">
                         <label for="autosize" class="control-label col-lg-2">Titulo</label>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                                 <input type="text" placeholder="Titulo" class="form-control"
                                        name="titulo" id="titulo"  />
                         </div>
-                        <label for="autosize" class="control-label col-lg-2">Fecha</label>
-                        <div class="col-lg-4">
-                            <input type="text" placeholder="Fecha" class="form-control"
-                                   name="fecha" id="fecha"  />
+                        <label for="autosize" class="control-label col-lg-2">Detalle</label>
+                        <div class="col-lg-6">
+                            <textarea id="detalle" name="detalle" class="form-control"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="autosize" class="control-label col-lg-2">Detalle</label>
-                        <div class="col-lg-10">
-                            <textarea id="detalle" name="detalle" class="form-control"></textarea>
+                        <label for="autosize" class="control-label col-lg-2">Titulo2</label>
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="Titulo" class="form-control"
+                                   name="titulo_i" id="titulo_i"  />
+                        </div>
+                        <label for="autosize" class="control-label col-lg-2">Detalle2</label>
+                        <div class="col-lg-6">
+                            <textarea id="detalle_i" name="detalle_i" class="form-control"></textarea>
                         </div>
                     </div>
 
 					<div class="form-group">
 						<label class="control-label col-lg-2">Seleccione Imagen</label>
-						<div class="col-lg-4">
+						<div class="col-lg-2">
 							<div class="fileupload fileupload-new" data-provides="fileupload">
 								<div class="fileupload-new thumbnail"
 									style="width: 200px; height: 150px;">

@@ -12,8 +12,10 @@ function limpiar(){
 
 function Registrar() {
 	var nombre = $("#categoria").val();
+    var nombre_i = $("#categoria_i").val();
 	var cadena = new FormData();
 	cadena.append('categoria', nombre);
+    cadena.append('categoria_i', nombre_i);
 	if(nombre == ''){
 		alert("Debe ingresar una categoria");
 		return false;

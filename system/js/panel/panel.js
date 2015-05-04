@@ -74,6 +74,8 @@ function registrar() {
     cadena.append('oidcat', $('#categoria').val());
     cadena.append('titulo', $('#titulo').val());
     cadena.append('detalle', $('#detalle').val());
+    cadena.append('titulo_i', $('#titulo_i').val());
+    cadena.append('detalle_i', $('#detalle_i').val());
     cadena.append('fecha', $('#fecha').val());
     cadena.append('enlace', $('#enlace').val());
 	

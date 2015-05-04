@@ -162,7 +162,8 @@ order by serie.fecha desc limit 3';
 	function cabTipo() {
 		$cabe = array ();
 		$cabe [1] = array ("titulo" => "","oculto" => 1);
-		$cabe [2] = array ("titulo" => "Categoria","atributos" => "width:100%","buscar" => 0);
+		$cabe [2] = array ("titulo" => "Español","buscar" => 0);
+        $cabe [3] = array ("titulo" => "Ingles","buscar" => 0);
 		
 		return $cabe;
 	}
@@ -200,7 +201,7 @@ order by serie.fecha desc limit 3';
 			$i = 0;
 			foreach ( $rsTip as $fila ) {
 				$i ++;
-				$cuep [$i] = array ("1" => $fila->oid,"2" => $fila->categoria);
+				$cuep [$i] = array ("1" => $fila->oid,"2" => $fila->categoria,"3" => $fila->categoria_i);
 			}
 			$obj = array ("Cabezera" => $this->cabTipo (),"Cuerpo" => $cuep,"Paginador" => 5,"Origen" => "json","msj" => 1);
 		} else {
@@ -281,7 +282,7 @@ order by serie.fecha desc limit 3';
 	}
 	function listaSerie() {
 		$cmbEstatus = array ("1" => "Inactivo","0" => "Activo");
-		$cmb = array ("5" => $cmbEstatus);
+		$cmb = array ("7" => $cmbEstatus);
 		$query = 'SELECT * FROM serie order by fecha desc ;';
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
@@ -294,11 +295,11 @@ order by serie.fecha desc limit 3';
 				$cuep [$i] = array (
 						"1" => $fila->id,
 						"2" => $fila->nombre,
-						"3" => $fila->descrip.'.',
-                    "4" => '',
-                    "5" => '.',
-						"6" => $fila->fecha.'.',
-						"7" => $fila->estatus.'.',
+						"3" => $fila->descrip,
+                        "4" => $fila->nombre_i,
+                        "5" => $fila->descrip_i,
+						"6" => $fila->fecha,
+						"7" => $fila->estatus,
 						"8" => '',
 						"9" => ''
 				);
