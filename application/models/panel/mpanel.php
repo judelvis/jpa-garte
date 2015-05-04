@@ -183,6 +183,9 @@ order by serie.fecha desc limit 3';
 	function listaTipo2() {
 		$html = '';
 		$query = 'SELECT oid,categoria as cate FROM categoria';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
+            $query = 'SELECT oid,categoria_i as cate From categoria';
+        }
 
 		$tipo = $this->db->query ( $query );
 		$obj = array ();
