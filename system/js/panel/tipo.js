@@ -8,6 +8,7 @@ $(function() {
 
 function limpiar(){
 	$("#categoria").val('');
+    $("#categoria_i").val('');
 }
 
 function Registrar() {

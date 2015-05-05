@@ -231,6 +231,45 @@ order by serie.fecha desc limit 3';
         }
         return $cate;
     }
+
+    /**
+     * Funciones para Biografia
+     */
+    function registrarBio($arr = null) {
+        $ban = $this->db->insert ( 'bio', $arr );
+        if ($ban) {
+            return "Se Registro con Exito";
+        }
+        return "No se pudo registrar";
+    }
+    function cabBio() {
+        $cabe = array ();
+        $cabe [1] = array ("titulo" => "","oculto" => 1);
+        $cabe [2] = array ("titulo" => "Español","buscar" => 0);
+        $cabe [3] = array ("titulo" => "Ingles","buscar" => 0);
+
+        return $cabe;
+    }
+
+    function listaBio() {
+        $query = 'SELECT * FROM bio order by fecha DESC ';
+        $tipo = $this->db->query ( $query );
+        $obj = array ();
+        $cant = $tipo->num_rows ();
+        if ($cant > 0) {
+            $rsTip = $tipo->result ();
+            $i = 0;
+            foreach ( $rsTip as $fila ) {
+                $i ++;
+                $cuep [$i] = array ("1" => $fila->oid,"2" => $fila->bio,"3" => $fila->bio_i);
+            }
+            $obj = array ("Cabezera" => $this->cabBio (),"Cuerpo" => $cuep,"Paginador" => 5,"Origen" => "json","msj" => 1);
+        } else {
+            $obj = array ("msj" => 0);
+        }
+
+        return json_encode ( $obj );
+    }
 	
 	/**
 	 * Funciones para Serie

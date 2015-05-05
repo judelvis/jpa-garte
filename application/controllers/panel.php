@@ -56,8 +56,38 @@ class Panel extends CI_Controller {
 		echo $this -> MPanel -> cmbTipo();
 		//echo "pasa";
 	}
-	
-	/**
+
+
+    /**
+     * Funciones para modulo Biografia
+     */
+
+    function bio(){
+        if (!isset($_SESSION['usuario_inmo'])) {
+            session_destroy();
+            redirect(base_url() . 'index.php/principal');
+        }
+        $data['js'] = 'bio';
+        $data['formulario'] = 'bio';
+        $data['titulo']='Biografia';
+        $this->load->view('panel/incluir/cabecera',$data);
+        $this->load->view('panel/incluir/menu');
+        $this->load->view('panel/principal',$data);
+    }
+
+    function registrarBio(){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        echo $this -> MPanel -> registrarBio($_POST);
+
+    }
+
+    function listarBio(){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        echo $this -> MPanel -> listaBio();
+    }
+
+
+    /**
 	 * Funciones para modulo serie
 	 */
 	
