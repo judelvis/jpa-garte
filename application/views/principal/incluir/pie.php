@@ -8,9 +8,26 @@
 							data-wow-delay="0.1s">
 							<a href="#">Empresa</a> &copy; <span id="copyright-year"></span>
 							</a>
+							
+				
+	
+							
 							<div style='float: right;'>
 								<a class="login" href="<?php echo site_url("panel") ?>">Intranet</a>
 							</div>
+							
+								<div style='float: center;'>
+				<div class="soc_icons">
+					<ul class="list-unstyled">
+						<li><a class="icon1" href="#" target="_blank"></a></li>
+						<li><a class="icon2" href="#" target="_blank"></a></li>
+						<li><a class="icon3" href="#" target="_blank"></a></li>
+						<div class="clearfix"></div>
+					</ul>	
+				</div>
+			</div>
+		
+							
 							<!--{%FOOTER_LINK} -->
 						</div>
 					</div>
