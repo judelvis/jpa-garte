@@ -1402,6 +1402,9 @@ nav {
 .soc_icons ul li a.icon3{
 	background: gray url('../images/icons.png') no-repeat -44px 10px;
 }
+
+.soc_icons ul li a.icon4{
+    background: gray url('../images/icons.png') no-repeat -116px 10px;
 }
 .soc_icons ul li a:hover{
 	zoom: 1;
