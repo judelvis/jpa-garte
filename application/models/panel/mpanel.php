@@ -270,6 +270,49 @@ order by serie.fecha desc limit 3';
 
         return json_encode ( $obj );
     }
+
+    /**
+     * Funciones para Curriculo
+     */
+    function registrarCurri($arr = null) {
+        $ban = $this->db->insert ( 'curriculo', $arr );
+        if ($ban) {
+            return "Se Registro con Exito";
+        }
+        return "No se pudo registrar";
+    }
+    function cabCurri() {
+        $cabe = array ();
+        $cabe [1] = array ("titulo" => "","oculto" => 1);
+        $cabe [2] = array ("titulo" => "Pais","buscar" => 0);
+        $cabe [3] = array ("titulo" => "Estado","buscar" => 0);
+        $cabe [4] = array ("titulo" => "Fecha","buscar" => 0);
+        $cabe [5] = array ("titulo" => "Evento","buscar" => 0);
+        $cabe [6] = array ("titulo" => "Evento_i","buscar" => 0);
+        $cabe [7] = array ("titulo" => "Lugar","buscar" => 0);
+        $cabe [8] = array ("titulo" => "Lugar_i","buscar" => 0);
+        return $cabe;
+    }
+
+    function listaCurri() {
+        $query = 'SELECT * FROM curriculo order by fecha DESC ';
+        $tipo = $this->db->query ( $query );
+        $obj = array ();
+        $cant = $tipo->num_rows ();
+        if ($cant > 0) {
+            $rsTip = $tipo->result ();
+            $i = 0;
+            foreach ( $rsTip as $fila ) {
+                $i ++;
+                $cuep [$i] = array ("1" => $fila->oid,"2" => $fila->pais,"3" => $fila->estado,"4" => $fila->fecha,"5" => $fila->evento,"6" => $fila->evento_i,"7" => $fila->lugar,"8" => $fila->lugar_i);
+            }
+            $obj = array ("Cabezera" => $this->cabCurri(),"Cuerpo" => $cuep,"Paginador" => 5,"Origen" => "json","msj" => 1);
+        } else {
+            $obj = array ("msj" => 0);
+        }
+
+        return json_encode ( $obj );
+    }
 	
 	/**
 	 * Funciones para Serie

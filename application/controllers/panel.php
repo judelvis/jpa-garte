@@ -86,6 +86,34 @@ class Panel extends CI_Controller {
         echo $this -> MPanel -> listaBio();
     }
 
+    /**
+     * Funciones para modulo Curriculo
+     */
+
+    function curri(){
+        if (!isset($_SESSION['usuario_inmo'])) {
+            session_destroy();
+            redirect(base_url() . 'index.php/principal');
+        }
+        $data['js'] = 'curri';
+        $data['formulario'] = 'curri';
+        $data['titulo']='Curriculo';
+        $this->load->view('panel/incluir/cabecera',$data);
+        $this->load->view('panel/incluir/menu');
+        $this->load->view('panel/principal',$data);
+    }
+
+    function registrarCurri(){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        echo $this -> MPanel -> registrarCurri($_POST);
+
+    }
+
+    function listarCurri(){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        echo $this -> MPanel -> listaCurri();
+    }
+
 
     /**
 	 * Funciones para modulo serie

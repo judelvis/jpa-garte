@@ -362,14 +362,12 @@ define("__TITLE__", "DAVID MOLINA MOLINA");
 define("__VERSION__", "V.1.0.0.0");
 define("__CSS__", $config['base_url'] . "/system/css/");
 define("__MAQ__", $config['base_url'] . "/system/maq/");
-define("__SLIDE__", $config['base_url'] . "/system/slide/");
 define("__IMG__", $config['base_url'] . "/system/img/");
 define("__JSVIEW__", $config['base_url'] . "/system/js/");
 define("__PANEL__", $config['base_url'] . "/system/assets/");
 define("__GALERIA__", $config['base_url'] . "/system/maqgaleria/");
 define("__LOCALWWW__", $config['base_url']);
 define("__PAG__", 6);
-define("__MONEDA__", 'EUR');
 define("__PAIS__", 1);
 
 

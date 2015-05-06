@@ -1,4 +1,7 @@
 /**
+ * Created by judprog on 06/05/15.
+ */
+/**
  * Created by judprog on 05/05/15.
  */
 /**
@@ -6,7 +9,7 @@
  * Fecha Creacion: 09 de Noviembre de 2014
  */
 $(function() {
-    listarBio();
+    listarCurri();
     $("#fecha").datepicker({
         changeMonth: true,
         changeYear: true
@@ -38,25 +41,26 @@ $(function() {
 });
 
 function limpiar(){
-    $("#bio").val('');
-    $("#bio_i").val('');
+    $("#lugar").val('');
+    $("#lugar_i").val('');
+    $("#evento").val('');
+    $("#evento_i").val('');
+    $("#pais").val('');
+    $("#estado").val('');
     $("#fecha").val('');
 }
 
-function Registrar() {
-    var bio = $("#bio").val();
-    var bio_i = $("#bio_i").val();
-    var fecha = $("#fecha").val();
+function registrar() {
     var cadena = new FormData();
-    cadena.append('bio', bio);
-    cadena.append('bio_i', bio_i);
-    cadena.append('fecha', fecha);
-    if(bio == ''){
-        alert("Debe ingresar Biografia");
-        return false;
-    }
+    cadena.append('lugar',   $("#lugar").val());
+    cadena.append('lugar_i', $("#lugar_i").val());
+    cadena.append('evento',   $("#evento").val());
+    cadena.append('evento_i', $("#evento_i").val());
+    cadena.append('pais',   $("#pais").val());
+    cadena.append('estado',   $("#estado").val());
+    cadena.append('fecha', $("#fecha").val());
     $.ajax({
-        url : sUrlP + "registrarBio",
+        url : sUrlP + "registrarCurri",
         type : 'POST',
         data : cadena,
         contentType : false,
@@ -65,15 +69,15 @@ function Registrar() {
         success : function(msj) {
             //alert(msj);
             limpiar();
-            listarBio();
+            listarCurri();
         }
     });
 
 }
 
-function listarBio(){
+function listarCurri(){
     $.ajax({
-        url : sUrlP + "listarBio",
+        url : sUrlP + "listarCurri",
         type : "POST",
         dataType : "json",
         success : function(json) {//alert(json['msj']);
@@ -83,7 +87,7 @@ function listarBio(){
                 Grid1.SetName("tp");
                 //Grid1.SetXls(true);
                 Grid1.Generar();
-            }else $("#reporte").html("No posee Biografia");
+            }else $("#reporte").html("No posee Curriculo");
         }
     });
 }
