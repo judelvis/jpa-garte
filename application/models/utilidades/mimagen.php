@@ -33,8 +33,10 @@ class MImagen extends CI_Model {
 		} else {
 			$arr = TRUE;
 		}
-		$t = $this -> crearThumbnail2($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
-		$t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
+		//$t = $this -> crearThumbnail2($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
+		//$t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
+        $t  = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
+        $t2 = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
 		$res['respuesta'] = $arr;
 		$res['mensaje'] = $t.$t2;
 		return $res;
@@ -96,6 +98,49 @@ class MImagen extends CI_Model {
 		// Guarda la imagen.
 		$this -> guardarImagen ( $thumbnail, $nombreThumbnail, $tipo );
 	}
+
+    function crearThumbnailRecortado($nombreImagen, $nombreThumbnail, $nuevoAncho, $nuevoAlto){
+
+        // Obtiene las dimensiones de la imagen.
+        list($ancho, $alto) = getimagesize($nombreImagen);
+
+        // Si la division del ancho de la imagen entre el ancho del thumbnail es mayor
+        // que el alto de la imagen entre el alto del thumbnail entoces igulamos el
+        // alto de la imagen  con el alto del thumbnail y calculamos cual deberia ser
+        // el ancho para la imagen (Seria mayor que el ancho del thumbnail).
+        // Si la relacion entre los altos fuese mayor entonces el altoImagen seria
+        // mayor que el alto del thumbnail.
+        if ($ancho/$nuevoAncho > $alto/$nuevoAlto){
+            $altoImagen = $nuevoAlto;
+            $factorReduccion = $alto / $nuevoAlto;
+            $anchoImagen = $ancho / $factorReduccion;
+        }
+        else{
+            $anchoImagen = $nuevoAncho;
+            $factorReduccion = $ancho / $nuevoAncho;
+            $altoImagen = $alto / $factorReduccion;
+        }
+
+        // Abre la imagen original.
+        list($imagen, $tipo)= $this ->abrirImagen($nombreImagen);
+
+        // Crea la nueva imagen (el thumbnail).
+        $thumbnail = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+        // Si la relacion entre los anchos es mayor que la relacion entre los altos
+        // entonces el ancho de la imagen que se esta creando sera mayor que el del
+        // thumbnail porlo que se centrara para que se corte por la derecha y por la
+        // izquierda. Si el alto fuese mayor lo mismo se cortaria la imagen por arriba
+        // y por abajo.
+        if ($ancho/$nuevoAncho > $alto/$nuevoAlto){
+            imagecopyresampled($thumbnail , $imagen, ($nuevoAncho-$anchoImagen)/2, 0, 0, 0, $anchoImagen, $altoImagen, $ancho, $alto);
+        }  else {
+            imagecopyresampled($thumbnail , $imagen, 0, ($nuevoAlto-$altoImagen)/2, 0, 0, $anchoImagen, $altoImagen, $ancho, $alto);
+        }
+
+        // Guarda la imagen.
+        $this ->guardarImagen($thumbnail, $nombreThumbnail, $tipo);
+    }
 	function abrirImagen($nombre) {
 		$info = getimagesize ( $nombre );
 		switch ($info ["mime"]) {

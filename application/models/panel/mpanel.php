@@ -148,6 +148,75 @@ order by serie.fecha desc limit 3';
 		return $cabe;
 	}
 
+
+    /**
+     * Funciones para noticia
+     */
+    /**
+     * funciones de galeria
+     */
+    function registrarNoticia($arr) {
+        $this->db->insert ( "noticia", $arr );
+        return "La imagen se registro correctamente";
+    }
+    function consultarNoticia() {
+        $imagenes = $this->db->query ( 'SELECT * FROM noticia order by fecha DESC ');
+        $obj = array ();
+        $cant = $imagenes->num_rows ();
+        if ($cant > 0) {
+            $obj ['resp'] = 1;
+            $rsImg = $imagenes->result ();
+            $i = 0;
+            foreach ( $rsImg as $fila ) {
+                $i ++;
+                $rImg = '<img src="' . __IMG__ . 'noticia/' . $fila->imagen . '" width=200></img> ';
+                // $rImg = "epa";
+                $cuep [$i] = array ("1" => $fila->oid,"2" => $fila->imagen,"3" => $fila->titulo,"4" => $fila->descrip,"5" => "","6" => $rImg);
+            }
+            $obj = array ("Cabezera" => $this->cabNoticia (),"Cuerpo" => $cuep,"Paginador" => 10,"Origen" => "json","msj" => "SI");
+        } else {
+            $obj = array ("msj" => "NO");
+        }
+        return json_encode ( $obj );
+    }
+
+    function listarNoticia($arr){
+        $consulta = $this -> db -> query("Select * From noticia order by fecha DESC " );
+        $cant = $consulta -> num_rows();
+        if($cant > 0){
+            $porta = $consulta -> result();
+        }else{
+            $porta = 0;
+        }
+        return $porta;
+    }
+
+    function eliminarNoticia($arr) {
+        if ($this->db->query ( "DELETE FROM noticia WHERE oid=" . $arr [0] )) {
+            $archivo = BASEPATH . 'img/noticia/' . $arr [1];
+            if (file_exists ( $archivo )) {
+                if (unlink ( $archivo ))
+                    $msj = "El archivo fue borrado";
+                else
+                    $msj = "El archivo no fue borrado";
+            } else
+                $msj = "El archivo no existe";
+        } else {
+            $msj = "No se elimino";
+        }
+        return $msj;
+    }
+    function cabNoticia() {
+        $cabe = array ();
+        $cabe [1] = array ("titulo" => "","oculto" => 1);
+        $cabe [2] = array ("titulo" => "Imagen","buscar" => 0);
+        $cabe [3] = array ("titulo" => "Titulo","buscar" => 0);
+        $cabe [4] = array ("titulo" => "Descripcion","buscar" => 0);
+        $cabe [5] = array ("titulo" => "#","tipo" => "bimagen","funcion" => 'eliminarGaleria',"parametro" => "1,2",	"ruta" => __IMG__ . "quitar.png",
+            "atributos" => "text-align:center;" );
+        $cabe [6] = array ("titulo" => "Ver","atributos" => "width:40%");
+        return $cabe;
+    }
 	
 	/**
 	 * Funciones para Categoria

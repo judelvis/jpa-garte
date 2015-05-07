@@ -114,6 +114,39 @@ class Panel extends CI_Controller {
         echo $this -> MPanel -> listaCurri();
     }
 
+    /**
+     * Funciones para modulo Noticias
+     */
+
+    function noticia(){
+        if (!isset($_SESSION['usuario_inmo'])) {
+            session_destroy();
+            redirect(base_url() . 'index.php/principal');
+        }
+        $data['js'] = 'noticia';
+        $data['formulario'] = 'noticia';
+        $data['titulo']='Noticia';
+        $this->load->view('panel/incluir/cabecera',$data);
+        $this->load->view('panel/incluir/menu');
+        $this->load->view('panel/principal',$data);
+    }
+
+    function registrarNoticia(){
+        $this -> load -> model('utilidades/mimagen', 'MImagen');
+        $this -> load -> model('panel/mpanel', 'MPanel');
+
+        $valor = $this -> MImagen -> cargar($_FILES, BASEPATH . 'img/noticia') -> salvar();
+        $nombreImagen = $_FILES['imagen']['name'];
+        $arr = array("imagen"=>$nombreImagen,"titulo"=>$_POST['titulo'],"descrip"=>$_POST['descrip'],"titulo_i"=>$_POST['titulo_i'],"descrip_i"=>$_POST['descrip_i'],"fecha"=>$_POST['fecha'],"enlace"=>$_POST['enlace']);
+        if($valor)echo $this -> MPanel -> registrarNoticia($arr);
+        else echo "No se pudo guardar la imagen".$valor['mensaje'];
+    }
+
+    function listarNoticia(){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        echo $this -> MPanel -> consultarNoticia();
+    }
+
 
     /**
 	 * Funciones para modulo serie
