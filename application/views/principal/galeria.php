@@ -79,7 +79,7 @@
                                                 <span class="overlay-img-thumb font-icon-plus"></span>
                                             </a>
                                         <!-- Thumb Image and Description -->
-                                            <img src="' . __IMG__ . 'galeria/miniatura/' . $ls->imagen . '" alt="'.$ls->detalle.'">
+                                            <img src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt="'.$ls->detalle.'">
                                         </li>
                                     ';
                                 }else{
@@ -91,7 +91,7 @@
                                                 <span class="overlay-img-thumb font-icon-plus"></span>
                                             </a>
                                             <!-- Thumb Image and Description -->
-                                            <img src="' . __IMG__ . 'galeria/miniatura/' . $ls->imagen . '" alt="'.$ls->detalle.'">
+                                            <img src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt="'.$ls->detalle.'">
                                         </li>
 
                                     ';
