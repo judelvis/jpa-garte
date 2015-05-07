@@ -134,5 +134,13 @@ function consultar(){//alert(1);
 }
 
 function limpiar(){
-	
+    $('#imagen').val('');
+    $('#oidser').val('');
+    $('#oidcat').val('');
+    $('#titulo').val('');
+    $('#detalle').val('');
+    $('#titulo_i').val('');
+    $('#detalle_i').val('');
+    $('#fecha').val('');
+    $('#enlace').val('');
 }

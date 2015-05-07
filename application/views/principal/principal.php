@@ -84,8 +84,9 @@
 							<div class="button-wrapper1">
 								<a class="btn-big-green wow fadeIn" data-wow-duration="1s"
 									data-wow-delay="0.1s"
-									href="<?php echo site_url("principal/consulta")?>"> <span>Ver
-										Todas Las Series</span>
+									href="<?php echo site_url("principal/consulta")?>"> <span><?php if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')echo'All';
+                                        else echo 'Ver Todas Las Series';
+                                        ?></span>
 								</a>
 							</div>
 						</div>

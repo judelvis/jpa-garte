@@ -35,10 +35,10 @@ class MImagen extends CI_Model {
 		}
 		//$t = $this -> crearThumbnail2($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
 		//$t2 = $this -> crearThumbnail2($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
-        $t  = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
+        //$t  = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/miniatura/' . $this->nombre, 100, 75);
         $t2 = $this -> crearThumbnailRecortado($this->ruta, $this->directorio . '/medio/' . $this->nombre, 270, 200);
 		$res['respuesta'] = $arr;
-		$res['mensaje'] = $t.$t2;
+		$res['mensaje'] = $t2;
 		return $res;
 	}
 	

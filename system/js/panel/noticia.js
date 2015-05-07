@@ -73,14 +73,14 @@ function registrar() {
             $("#modal_mensaje").html(msj);
             $("#msj_alertas").modal('show');
             //alert(msj);
-            consultar();
+            listarNoticia();
             limpiar();
         }
     });
 
 }
 
-function consultar(){
+function listarNoticia(){
     $.ajax({
         url : sUrlP + "listarNoticia",
         type : 'POST',
@@ -102,5 +102,11 @@ function consultar(){
 }
 
 function limpiar(){
+    $("#titulo").val('');
+    $("#titulo_i").val('');
+    $("#descrip").val('');
+    $("#descrip_i").val('');
+    $("#fecha").val('');
+    $("#enlace").val('');
 
 }

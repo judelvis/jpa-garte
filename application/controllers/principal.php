@@ -27,6 +27,7 @@ class Principal extends CI_Controller {
 		$data ['consulta'] = $busqueda ['query'];
 		$data ['tit'] = __TITLE__;
 		$data ['tb'] = 'Mas Recientes';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'Mas Recientes EN ingles';
 		$data ['js'] = 'principal';
         $data['tipo'] = 0;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
@@ -39,6 +40,7 @@ class Principal extends CI_Controller {
 		$this->load->model ( 'panel/mpanel', 'MPanel' );
 		$data ['tit'] = 'Contactenos';
 		$data ['tb'] = 'Contactenos';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'Contac';
 		$data ['js'] = 'principal';
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
 		$this->load->view ( 'principal/incluir/head', $data );
@@ -70,6 +72,7 @@ class Principal extends CI_Controller {
 		$data ['consulta'] = $busqueda ['query'];
 		$data ['tit'] = 'Todas Las Series';
 		$data ['tb'] = 'Todas Las Series';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'All Series';
 		$data ['js'] = 'principal';
         $data['tipo'] = 0;
 		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
@@ -79,41 +82,7 @@ class Principal extends CI_Controller {
 		$this->load->view ( 'principal/incluir/pie', $data );
 	}
 	
-	function consulta2() {
-		$this->load->model ( 'panel/mpanel', 'MPanel' );
-		$busqueda = $this->MPanel->consulta2 ($_POST);
-		$data ['lst'] = $busqueda ['lst'];
-		$data ['consulta'] = $busqueda ['query'];
-		$data ['tit'] = 'Busqueda';
-		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tb'] = 'Busqueda Por Filtro';
-		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
-		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
-		$this->load->view ( 'principal/incluir/head', $data );
-		$this->load->view ( 'principal/incluir/cab', $data );
-		$this->load->view ( 'principal/principal', $data );
-		$this->load->view ( 'principal/incluir/pie', $data );
-	}
-	
-	public function cordenado() {
-		$this->load->model ( 'panel/mpanel', 'MPanel' );
-		$busqueda = $this->MPanel->ordenado ( $_POST );
-		$data ['lst'] = $busqueda ['lst'];
-		$data ['consulta'] = $_POST ['consulta'];
-		$data ['tit'] = '';
-		$data ['slider'] = $this ->MPanel-> sliderP();
-		$data ['tb'] = 'Busqueda Ordenada';
-		$data ['js'] = 'principal';
-		$data ['jss'] = 'slp';
-		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
-		$this->load->view ( 'principal/incluir/head', $data );
-		$this->load->view ( 'principal/incluir/cab', $data );
-		$this->load->view ( 'principal/principal', $data );
-		$this->load->view ( 'principal/incluir/pie', $data );
-	}
+
 	function validarUsuario() {
 		$this->load->model ( 'usuario/iniciar', 'Iniciar' );
 		$this->Iniciar->validarCuenta ( $_POST );

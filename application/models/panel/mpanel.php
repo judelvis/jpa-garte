@@ -156,11 +156,11 @@ order by serie.fecha desc limit 3';
      * funciones de galeria
      */
     function registrarNoticia($arr) {
-        $this->db->insert ( "noticia", $arr );
+        $this->db->insert ( "noticias", $arr );
         return "La imagen se registro correctamente";
     }
     function consultarNoticia() {
-        $imagenes = $this->db->query ( 'SELECT * FROM noticia order by fecha DESC ');
+        $imagenes = $this->db->query ( 'SELECT * FROM noticias order by fecha DESC ');
         $obj = array ();
         $cant = $imagenes->num_rows ();
         if ($cant > 0) {
@@ -181,7 +181,7 @@ order by serie.fecha desc limit 3';
     }
 
     function listarNoticia($arr){
-        $consulta = $this -> db -> query("Select * From noticia order by fecha DESC " );
+        $consulta = $this -> db -> query("Select * From noticias order by fecha DESC " );
         $cant = $consulta -> num_rows();
         if($cant > 0){
             $porta = $consulta -> result();
@@ -192,7 +192,7 @@ order by serie.fecha desc limit 3';
     }
 
     function eliminarNoticia($arr) {
-        if ($this->db->query ( "DELETE FROM noticia WHERE oid=" . $arr [0] )) {
+        if ($this->db->query ( "DELETE FROM noticias WHERE oid=" . $arr [0] )) {
             $archivo = BASEPATH . 'img/noticia/' . $arr [1];
             if (file_exists ( $archivo )) {
                 if (unlink ( $archivo ))
@@ -212,7 +212,7 @@ order by serie.fecha desc limit 3';
         $cabe [2] = array ("titulo" => "Imagen","buscar" => 0);
         $cabe [3] = array ("titulo" => "Titulo","buscar" => 0);
         $cabe [4] = array ("titulo" => "Descripcion","buscar" => 0);
-        $cabe [5] = array ("titulo" => "#","tipo" => "bimagen","funcion" => 'eliminarGaleria',"parametro" => "1,2",	"ruta" => __IMG__ . "quitar.png",
+        $cabe [5] = array ("titulo" => "#","tipo" => "bimagen","funcion" => 'eliminarNoticia',"parametro" => "1,2",	"ruta" => __IMG__ . "quitar.png",
             "atributos" => "text-align:center;" );
         $cabe [6] = array ("titulo" => "Ver","atributos" => "width:40%");
         return $cabe;
@@ -292,11 +292,12 @@ order by serie.fecha desc limit 3';
 	}
 
     function mostrarTipo($oid){
-        $consulta = $this -> db ->query("SELECT categoria from categoria where oid=".$oid);
+        $consulta = $this -> db ->query("SELECT * from categoria where oid=".$oid);
         $resultado = $consulta -> result();
         $cate = "";
         foreach($resultado as $resp){
             $cate = $resp -> categoria;
+            if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$cate = $resp->categoria_i;
         }
         return $cate;
     }

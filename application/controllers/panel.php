@@ -147,6 +147,12 @@ class Panel extends CI_Controller {
         echo $this -> MPanel -> consultarNoticia();
     }
 
+    function eliminarNoticia(){
+        $this -> load -> model('panel/mpanel', 'MPanel');
+        $json = json_decode($_POST['objeto'], true);
+        echo $this -> MPanel -> eliminarNoticia($json);
+    }
+
 
     /**
 	 * Funciones para modulo serie
