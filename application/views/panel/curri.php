@@ -27,13 +27,13 @@
                     <div class="form-group">
                         <label for="autosize" class="control-label col-lg-2">Pais</label>
                         <div class="col-lg-2">
-                             <input type="text" placeholder="Serie" class="form-control"
+                             <input type="text" placeholder="Pais" class="form-control"
                                        name="pais" id="pais"  />
 
                         </div>
                         <label for="autosize" class="control-label col-lg-2">Estado</label>
                         <div class="col-lg-2">
-                            <input type="text" placeholder="Serie" class="form-control"
+                            <input type="text" placeholder="Estado" class="form-control"
                                    name="estado" id="estado"  />
                         </div>
                         <label for="autosize" class="control-label col-lg-2">Fecha</label>
@@ -46,12 +46,12 @@
                     <div class="form-group">
                         <label for="autosize" class="control-label col-lg-2">Evento</label>
                         <div class="col-lg-2">
-                            <input type="text" placeholder="Titulo" class="form-control"
+                            <input type="text" placeholder="Evento" class="form-control"
                                    name="evento" id="evento"  />
                         </div>
                         <label for="autosize" class="control-label col-lg-2">Lugar</label>
                         <div class="col-lg-6">
-                            <input type="text" placeholder="Titulo" class="form-control"
+                            <input type="text" placeholder="Lugar" class="form-control"
                                    name="lugar" id="lugar"  />
                         </div>
                     </div>
@@ -59,12 +59,12 @@
                     <div class="form-group">
                         <label for="autosize" class="control-label col-lg-2">Evento I.</label>
                         <div class="col-lg-2">
-                            <input type="text" placeholder="Titulo" class="form-control"
+                            <input type="text" placeholder="Evento I." class="form-control"
                                    name="evento_i" id="evento_i"  />
                         </div>
                         <label for="autosize" class="control-label col-lg-2">Lugar I.</label>
                         <div class="col-lg-6">
-                            <input type="text" placeholder="Titulo" class="form-control"
+                            <input type="text" placeholder="Lugar I." class="form-control"
                                    name="lugar_i" id="lugar_i"  />
                         </div>
                     </div>
