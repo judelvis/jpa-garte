@@ -341,6 +341,18 @@ order by serie.fecha desc limit 3';
         return json_encode ( $obj );
     }
 
+    function listarBiografia(){
+        $query = 'SELECT * FROM bio order by fecha DESC ';
+        $bio = $this->db->query ( $query );
+        $cant = $bio->num_rows ();
+        $resultado = 0;
+        if ($cant > 0) {
+            $resultado = $bio->result ();
+
+        }
+        return $resultado;
+    }
+
     /**
      * Funciones para Curriculo
      */
