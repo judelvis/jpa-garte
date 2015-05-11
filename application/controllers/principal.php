@@ -87,6 +87,25 @@ class Principal extends CI_Controller {
 		$this->load->model ( 'usuario/iniciar', 'Iniciar' );
 		$this->Iniciar->validarCuenta ( $_POST );
 	}
+    /**
+     * Funciones para biografia
+     */
+    function biografia(){
+        $this->load->model ( 'panel/mpanel', 'MPanel' );
+        $busqueda = $this->MPanel->listaRecientes ();
+        $data ['lst'] = $busqueda ['lst'];
+        $data ['consulta'] = $busqueda ['query'];
+        $data ['tit'] = __TITLE__;
+        $data ['tb'] = 'Mas Recientes';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'Mas Recientes EN ingles';
+        $data ['js'] = 'principal';
+        $data['tipo'] = 0;
+        $data ['lstTipo'] = $this->MPanel->listaTipo2 ();
+        $this->load->view ( 'principal/incluir/head', $data );
+        $this->load->view ( 'principal/incluir/cab', $data );
+        $this->load->view ( 'principal/biografia', $data );
+        $this->load->view ( 'principal/incluir/pie', $data );
+    }
 	
 	/**
 	 * funciones paginas

@@ -27,7 +27,7 @@ if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
 						<li class="current"><a href="<?php echo site_url("principal") ?>"><?php echo $home;?></a>
 						</li>
 						<li><a href="#"><?php echo $porta;?></a> <?php echo $lstTipo;?></li>
-						<li><a href="#"><?php echo $bio;?></a></li>
+						<li><a href="<?php echo site_url("principal/biografia")?>"><?php echo $bio;?></a></li>
                         <li><a href="#"><?php echo $not;?></a></li>
 						<li><a href="<?php echo site_url("principal/contacto")?>"><?php echo $con;?></a>
 						</li>
