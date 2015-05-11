@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="row">
                     <div class="grid_3">
->                        <div class="wrapper2" style="padding-top: 50px;">
+                        <div class="wrapper2" style="padding-top: 50px;">
                         <?php
                         if ($lst == 0) {
                             echo '<div class="border-wrapper1 wrapper3"><div class="row"><h2><center>No existen publicaciones</center></h2></div></div>';
