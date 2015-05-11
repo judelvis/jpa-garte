@@ -59,7 +59,7 @@
 									</a>
 									<div class="info2 wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
 									<div class="price">
-									<span >Descripcion:</span>
+
 									<span class="first">'.substr($desSerie,0,140).'</span>
 									</div>
 									<br>

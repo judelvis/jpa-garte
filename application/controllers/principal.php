@@ -18,8 +18,25 @@ class Principal extends CI_Controller {
         redirect ( base_url () );
     }
 	function index() {
-		$this->principal ();
+		$this->inicio();
 	}
+    function inicio() {
+        $this->load->model ( 'panel/mpanel', 'MPanel' );
+        $busqueda = $this->MPanel->listaRecientes ();
+        $data ['lst'] = $busqueda ['lst'];
+        $data ['consulta'] = $busqueda ['query'];
+        $data ['tit'] = __TITLE__;
+        $data ['tb'] = 'Mas Recientes';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'Mas Recientes EN ingles';
+        $data ['js'] = 'principal';
+        $data['tipo'] = 0;
+        $data ['lstTipo'] = $this->MPanel->listaTipo2 ();
+        $this->load->view ( 'principal/incluir/head', $data );
+        $this->load->view ( 'principal/incluir/cab', $data );
+        $this->load->view ( 'principal/inicio', $data );
+        $this->load->view ( 'principal/incluir/pie', $data );
+    }
+
 	function principal() {
 		$this->load->model ( 'panel/mpanel', 'MPanel' );
 		$busqueda = $this->MPanel->listaRecientes ();
@@ -92,9 +109,10 @@ class Principal extends CI_Controller {
      */
     function biografia(){
         $this->load->model ( 'panel/mpanel', 'MPanel' );
-        $busqueda = $this->MPanel->listaRecientes ();
-        $data ['lst'] = $busqueda ['lst'];
-        $data ['consulta'] = $busqueda ['query'];
+        $busqueda = $this->MPanel->listarBiografia ();
+        $data ['lst'] = $busqueda;
+        $busqueda2 = $this->MPanel->listarCurriculo ();
+        $data ['lst2'] = $busqueda2;
         $data ['tit'] = __TITLE__;
         $data ['tb'] = 'Mas Recientes';
         if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'Mas Recientes EN ingles';
@@ -106,7 +124,24 @@ class Principal extends CI_Controller {
         $this->load->view ( 'principal/biografia', $data );
         $this->load->view ( 'principal/incluir/pie', $data );
     }
-	
+
+    /**
+     * funciones para noticias
+     */
+    function noticia(){
+        $this->load->model ( 'panel/mpanel', 'MPanel' );
+        $busqueda = $this->MPanel->listarNoticia ();
+        $data ['lst'] = $busqueda;
+        $data ['tit'] = __TITLE__;
+        $data ['tb'] = 'Noticias';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')$data ['tb'] = 'NEWS';
+        $data ['js'] = 'principal';
+        $data ['lstTipo'] = $this->MPanel->listaTipo2 ();
+        $this->load->view ( 'principal/incluir/head', $data );
+        $this->load->view ( 'principal/incluir/cab', $data );
+        $this->load->view ( 'principal/noticia', $data );
+        //$this->load->view ( 'principal/incluir/pie', $data );
+    }
 	/**
 	 * funciones paginas
 	 */
@@ -132,23 +167,6 @@ class Principal extends CI_Controller {
         //print_R($datos);
         $this->load->view ( 'principal/galeria', $datos );
     }
-
-	function galeria2($oid,$cat) {
-		$this->load->model ( 'panel/mpanel', 'MPanel' );
-		$data ['js'] = 'detalle';
-		$data ['lst'] = $this->busca_imagenes ( $oid,$cat );
-		$data ['slider'] = $this ->MPanel-> sliderP($oid);
-		$data ['tit'] = 'Detalle';
-		$data ['tb'] = 'Detalle';
-		$data ['js'] = 'principal';
-		$data ['jss'] = 'sld';
-		$data ['lstTipo'] = $this->MPanel->listaTipo2 ();
-		//$data ['lstEstados'] = $this->MPanel->listaZonas2 ();
-		$this->load->view ( 'principal/incluir/head', $data );
-		$this->load->view ( 'principal/incluir/cab', $data );
-		$this->load->view ( 'principal/detalle', $data );
-		$this->load->view ( 'principal/incluir/pie', $data );
-	}
 	
 	/**
 	 * Cerrar Sesion del sistema

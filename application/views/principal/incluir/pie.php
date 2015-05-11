@@ -47,7 +47,6 @@
 <script	src="<?php echo __MAQ__;?>js/jquery.js"></script>
 <script src="<?php echo __JSVIEW__;?>general/Global.js"></script>
 <script	src="<?php echo __JSVIEW__;?>maqueta/<?php echo $js;?>.js"></script>
-<script	src="<?php echo __JSVIEW__;?>maqueta/<?php echo $jss;?>.js"></script>
 <script src="<?php echo __GALERIA__;?>js/modernizr.js"></script>
 
 </body>

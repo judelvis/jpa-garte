@@ -1,9 +1,9 @@
 <?php
-$home = 'Principal';$porta='Portafolio';$bio = 'Biografia';$not = 'Noticias';$con ='Contactenos';
+$home = 'Principal';$porta='Portafolio';$bio = 'Biografia';$not = 'Noticias';$con ='Contacto';
 $bandera = '<a class="btn btn-lg btn-success" href="'.site_url("principal/idioma").'">
                     English</a>';
 if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
-    $home = 'Home';$porta='Porta';$bio = 'Biografiaf';$not = 'News';$con ='Contac';
+    $home = 'Home';$porta='Porta';$bio = 'Biographi';$not = 'News';$con ='Contac';
     $bandera = '<a class="btn btn-lg btn-success" href="'.site_url("principal/cerrar").'">
                     Español</a><br>';
 }
@@ -13,7 +13,7 @@ if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
 		<div class="info wow fadeIn" data-wow-duration="1s"
 			data-wow-delay=".2s">
 			<div class="width-wrapper">
-				<h1>
+				<h1><img src="<?php echo __IMG__;?>logo.jpg" style="width: 50px" />
 					<span class="wrapper"><font color="#000" ><?php echo __TITLE__;?></font>
 					</span>
 				</h1>
@@ -28,7 +28,7 @@ if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
 						</li>
 						<li><a href="#"><?php echo $porta;?></a> <?php echo $lstTipo;?></li>
 						<li><a href="<?php echo site_url("principal/biografia")?>"><?php echo $bio;?></a></li>
-                        <li><a href="#"><?php echo $not;?></a></li>
+                        <li><a href="<?php echo site_url("principal/noticia")?>"><?php echo $not;?></a></li>
 						<li><a href="<?php echo site_url("principal/contacto")?>"><?php echo $con;?></a>
 						</li>
 					</ul>

@@ -16,27 +16,13 @@ $(document).ready(function() {
 	if ($('html').hasClass('desktop')) {
 		new WOW().init();
 	}
-	$("#tabs").tabs();
 	$('#bookingForm2').bookingForm();
-	cmbZonas();
 	cmbTipo();
 	pagina(1);
 	
 });
 
-function cmbZonas() {
-	$.ajax({
-		url : sUrlP + 'cmbZonas',
-		dataType : 'JSON',
-		success : function(json) {//alert(json);
-			$.each(json, function(item, valor) {
-				$("#estado").append(new Option(valor, item, false, true));
-			});
-			$("#estado").append(new Option('Seleccione un Estado', 0, false, true));
-			
-		}
-	});
-}
+
 
 function cmbTipo() {
 	$.ajax({
@@ -53,35 +39,6 @@ function cmbTipo() {
 	});
 }
 
-function cmbCiudad() {
-	var zona = $("#estado").val();
-	var cadena = new FormData();
-	cadena.append('zona', zona);
-	//alert(zona);
-	$.ajax({
-		url : sUrlP + 'cmbCiudad',
-		type : 'POST',
-		data : cadena,
-		contentType : false,
-		processData : false,
-		cache : false,
-		dataType : 'JSON',
-		success : function(json) {//alert(json);
-			$("#ciudad").html('');
-			$.each(json, function(item, valor) {
-				$("#ciudad").append(new Option(valor, item, false, true));
-			});
-			$("#ciudad").append(new Option('Seleccione Ciudad', 0, false, true));
-		}
-	});
-}
-
-function validar(){
-	if($("#estado").val() == 0 && $("#ciudad").val() == 0 && $("#tipo").val() == 0 && $("#min_precio").val() == 0 && $("#max_precio").val() == 0 && $("#min_tama").val() == 0 && $("#max_tama").val() == 0 && $("#banos").val() == 0 && $("#habita").val() == 0  ){
-		return false;
-	}
-	$("#bookingForm").submit();
-}
 
 function pagina(p){
 	tam = $('#paginador li').size();

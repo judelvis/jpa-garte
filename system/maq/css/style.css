@@ -216,7 +216,7 @@ h6 {
     top: 0;
     width: 27px;
     height: 100%;
-    background: url(../images/box-shadow2-right.png) repeat-y center top;
+    /*background: url(../images/box-shadow2-right.png) repeat-y center top;*/
 }
 .width-wrapper.width-wrapper__inset1:before {
     content: '';
@@ -226,7 +226,7 @@ h6 {
     top: 0;
     width: 27px;
     height: 100%;
-    background: url(../images/box-shadow2-left.png) repeat-y center top;
+    /*background: url(../images/box-shadow2-left.png) repeat-y center top;*/
 }
 .width-wrapper.width-wrapper__inset2 {
     background: #f7f7f7;
@@ -417,7 +417,8 @@ h1 strong {
 @media (max-width: 1199px) {
     h1 {
         margin-left: 10px;
-        font: 100 20px/30px "Lato", sans-serif;
+        font: 400 25px/30px "Lato", sans-serif;
+
         
     }
 }
@@ -709,7 +710,7 @@ nav {
 }
 /* ======= Post 1 Latest News ======= */
 .post1 {
-    padding: 16px 20px 28px;
+    padding: 16px 20px 2px;
     border: 1px solid #e3e3e3;
 }
 .post1 h2 {

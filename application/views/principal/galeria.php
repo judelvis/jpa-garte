@@ -9,8 +9,6 @@
     <!-- Meta Tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <title>Brushed | Responsive One Page Template</title>
-
     <meta name="description" content="Insert Your Site Description" />
 
     <!-- Mobile Specifics -->

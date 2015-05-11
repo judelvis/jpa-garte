@@ -28,10 +28,11 @@ class MPanel extends CI_Model {
 	 * funciones para paginas
 	 */
 	function listaRecientes() {
-		$query = 'SELECT * FROM serie
-LEFT join (select * from portafolio group by oidser order by fecha desc  )as A on serie.id = A.oidser
-  			where estatus=0
-order by serie.fecha desc limit 3';
+		$query = 'select * from serie
+join(Select * from portafolio
+	join(
+		select oidser as idser,max(fecha)as fechaM from portafolio group by oidser)as a on a.idser= portafolio.oidser and a.fechaM = portafolio.fecha
+	)as b on serie.id=b.oidser order by fechaM desc limit 1';
 		$rec = $this->db->query ( $query );
 		$lista = array ();
 		if ($rec->num_rows () > 0)
@@ -152,9 +153,6 @@ order by serie.fecha desc limit 3';
     /**
      * Funciones para noticia
      */
-    /**
-     * funciones de galeria
-     */
     function registrarNoticia($arr) {
         $this->db->insert ( "noticias", $arr );
         return "La imagen se registro correctamente";
@@ -180,8 +178,12 @@ order by serie.fecha desc limit 3';
         return json_encode ( $obj );
     }
 
-    function listarNoticia($arr){
-        $consulta = $this -> db -> query("Select * From noticias order by fecha DESC " );
+    function listarNoticia(){
+        $query = 'Select imagen,titulo as tit,descrip as des,enlace,fecha From noticias order by fecha DESC ';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
+            $query = 'Select imagen,titulo_i as tit,descrip_i as des,enlace,fecha From noticias order by fecha DESC ';
+        }
+        $consulta = $this -> db -> query($query );
         $cant = $consulta -> num_rows();
         if($cant > 0){
             $porta = $consulta -> result();
@@ -342,7 +344,10 @@ order by serie.fecha desc limit 3';
     }
 
     function listarBiografia(){
-        $query = 'SELECT * FROM bio order by fecha DESC ';
+        $query = 'SELECT bio as biografia,fecha FROM bio order by fecha DESC ';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
+            $query = 'SELECT bio_i as biografia FROM bio order by fecha DESC ';
+        }
         $bio = $this->db->query ( $query );
         $cant = $bio->num_rows ();
         $resultado = 0;
@@ -394,6 +399,21 @@ order by serie.fecha desc limit 3';
         }
 
         return json_encode ( $obj );
+    }
+
+    function listarCurriculo(){
+        $query = 'SELECT lugar as lug, evento as even,pais,estado,fecha FROM curriculo order by fecha DESC ';
+        if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
+            $query = 'SELECT lugar_i as lug, evento_i as even,pais,estado,fecha FROM curriculo order by fecha DESC ';
+        }
+        $curri = $this->db->query ( $query );
+        $cant = $curri->num_rows ();
+        $resultado = 0;
+        if ($cant > 0) {
+            $resultado = $curri->result ();
+
+        }
+        return $resultado;
     }
 	
 	/**
