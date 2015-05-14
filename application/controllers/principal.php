@@ -176,4 +176,8 @@ class Principal extends CI_Controller {
 	}
 	function __destruct() {
 	}
+
+    function informacion(){
+        phpinfo();
+    }
 }
