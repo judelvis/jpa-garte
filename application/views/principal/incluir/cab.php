@@ -1,7 +1,7 @@
 <?php
 $home = 'Principal';$porta='Portafolio';$bio = 'Biografia';$not = 'Noticias';$con ='Contacto';
 $bandera = '<div><a class="" href="'.site_url("principal/idioma").'">
-                    English</a></div>div>';
+                    English</a></div>';
 if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
     $home = 'Home';$porta='Porta';$bio = 'Biographi';$not = 'News';$con ='Contac';
     $bandera = '<a class="" href="'.site_url("principal/cerrar").'">
