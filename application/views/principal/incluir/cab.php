@@ -1,10 +1,10 @@
 <?php
 $home = 'Principal';$porta='Portafolio';$bio = 'Biografia';$not = 'Noticias';$con ='Contacto';
-$bandera = '<a class="btn btn-lg btn-success" href="'.site_url("principal/idioma").'">
-                    English</a>';
+$bandera = '<div><a class="" href="'.site_url("principal/idioma").'">
+                    English</a></div>div>';
 if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
     $home = 'Home';$porta='Porta';$bio = 'Biographi';$not = 'News';$con ='Contac';
-    $bandera = '<a class="btn btn-lg btn-success" href="'.site_url("principal/cerrar").'">
+    $bandera = '<a class="" href="'.site_url("principal/cerrar").'">
                     Español</a><br>';
 }
 ?>
@@ -32,8 +32,9 @@ if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
 						<li><a href="<?php echo site_url("principal/contacto")?>"><?php echo $con;?></a>
 						</li>
 					</ul>
+                    <?php echo $bandera;?>
 				</nav>
-                <?php echo $bandera;?>
+
 				<!--<form id="search" method="POST" accept-charset="utf-8"
 					style='width: 320px;'
 					action="<?php echo site_url("principal/consulta2")?>">
