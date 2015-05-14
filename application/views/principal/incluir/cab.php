@@ -1,11 +1,11 @@
 <?php
 $home = 'Principal';$porta='Portafolio';$bio = 'Biografia';$not = 'Noticias';$con ='Contacto';
-$bandera = '<div><a class="" href="'.site_url("principal/idioma").'">
+$bandera = '<div style="float: right;"><a class="" href="'.site_url("principal/idioma").'">
                     English</a></div>';
 if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i'){
     $home = 'Home';$porta='Porta';$bio = 'Biographi';$not = 'News';$con ='Contac';
-    $bandera = '<a class="" href="'.site_url("principal/cerrar").'">
-                    Español</a><br>';
+    $bandera = '<div style="float: right;"><a class="" href="'.site_url("principal/cerrar").'">
+                    Español</a></div><br>';
 }
 ?>
 <body>
