@@ -29,7 +29,7 @@
                                 echo '
                                 <div class="post1">
                                     <h4>'.$tituloSerie.'</h4>
-                                    <a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">
+                                    <a href="'.site_url("principal/consulta/".$ls->oidser).'" >
                                     <img class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" src="' . __IMG__ . 'galeria/medio/' . $ls->imagen . '" alt=""/>
                                     </a>
                                     <p class="wow fadeIn" data-wow-duration="1s"

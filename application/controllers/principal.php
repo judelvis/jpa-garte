@@ -81,10 +81,9 @@ class Principal extends CI_Controller {
 		$this->load->view ( 'principal/incluir/pie', $data );
 	}
 
-	function consulta($arr=null) {
+	function consulta($ser=null) {
 		$this->load->model ( 'panel/mpanel', 'MPanel' );
-		if(isset($_POST))$arr=$_POST;
-		$busqueda = $this->MPanel->consulta ( $arr );
+		$busqueda = $this->MPanel->consulta ( $ser );
 		$data ['lst'] = $busqueda ['lst'];
 		$data ['consulta'] = $busqueda ['query'];
 		$data ['tit'] = 'Todas Las Series';

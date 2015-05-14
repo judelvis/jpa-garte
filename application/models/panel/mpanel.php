@@ -62,15 +62,8 @@ join(Select * from portafolio
 		LEFT join (select * from portafolio group by oidser order by fecha desc  )as A on serie.id = A.oidser
 		where estatus=0 ';
 		$donde = '';
-		if (isset($arr ['tipo']) && $arr ['tipo'] != 0)	$donde .= ' and tipo=' . $arr ['tipo'];
-		if (isset($arr ['estado']) && $arr ['estado'] != 0)	$donde .= ' and estado=' . $arr ['estado'];
-		if (isset($arr ['ciudad']) && $arr ['ciudad'] != 0)	$donde .= ' and ciudad=' . $arr ['ciudad'];
-		if (isset($arr ['min_tama']) && $arr ['min_tama'] != 0)	$donde .= ' and tama >= ' . $arr ['min_tama'];
-		if (isset($arr ['max_tama']) && $arr ['max_tama'] != 0)	$donde .= ' and tama <= ' . $arr ['max_tama'];
-		if (isset($arr ['min_precio']) && $arr ['min_precio'] != 0)	$donde .= ' and precio >= ' . $arr ['min_precio'];
-		if (isset($arr ['max_precio']) && $arr ['max_precio'] != 0)	$donde .= ' and precio <= ' . $arr ['max_precio'];
-		if (isset($arr ['banos']) && $arr ['banos'] != 0) $donde .= ' and banos = ' . $arr ['banos'];
-		if (isset($arr ['habita']) && $arr ['habita'] != 0)	$donde .= ' and habita = ' . $arr ['habita'];
+		if ($arr != '')	$donde .= ' and id=' . $arr ;
+
 		$rec = $this->db->query ( $query . $donde );
 		$lista = array ();
 		if ($rec->num_rows () > 0) $lista ['lst'] = $rec->result ();
