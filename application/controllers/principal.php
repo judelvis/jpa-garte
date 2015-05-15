@@ -174,6 +174,7 @@ class Principal extends CI_Controller {
 		session_destroy ();
 		redirect ( base_url () );
 	}
+
 	function __destruct() {
 	}
 
