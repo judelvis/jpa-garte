@@ -16,7 +16,7 @@
               <span class="wrapper"><span class="wide">OFICINA:</span>+1 800 559 6580</span>
               <span class="wrapper"><span class="wide">Telefono:</span>+1 800 603 6035</span>
               <span class="wrapper"><span class="wide">FAX:</span>+1 800 889 9898</span>
-              <span class="wrapper"><span class="wide">E-mail:</span><a href="mailto:jud.prog@gmail.com" class="simple-link">jud.prog@gmail.com</a></span>
+              <span class="wrapper"><span class="wide">E-mail:</span><a href="mailto:jud.prog@gmail.com">jud.prog@gmail.com</a></span>
             </address>
           </div>
           <div class="grid_9">
@@ -63,7 +63,7 @@
                   </div>
                 </div>
                 <!-- <label class="recaptcha"><span class="empty-message">*This field is required.</span></label> -->
-                <div class="contact-form-buttons wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                <div class="" data-wow-duration="1s" data-wow-delay="0.1s">
                   <a href="#" data-type="submit" class="btn-default" onclick='enviar();'><span>Enviar</span></a>
                 </div>
               </fieldset>
