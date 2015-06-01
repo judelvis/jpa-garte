@@ -87,6 +87,7 @@ h6 {
     padding: 12px 18px 14px;
     background: url(../images/gradient3.png) repeat-x center bottom #ffffff;
     margin-bottom: 21px;
+
 }
 .heading1.heading1__offset1 {
     margin-bottom: 31px;
@@ -161,21 +162,24 @@ h6 {
 }
 .btn-big-green {
     display: inline-block;
-    font: 700 18px/32px "Lato", sans-serif;
+    font: 700 9px/16px "Lato", sans-serif;
     text-align: center;
     text-transform: uppercase;
     padding: 7px 22px 9px;
     border-radius: 3px;
     -webkit-box-shadow: 1px 1px 1px 0px #000;
     box-shadow: 1px 1px 1px 0px #aaaaaaa;
-    background: url(../images/gradient2.png) repeat-x center bottom #000;
-    border: 1px solid transparent;
-    color: #ffffff;
-}
-.btn-big-green:hover {
+    background: url(../images/gradient3.png) repeat-x center bottom #000;
     color: #303030;
     border: 1px solid #e3e3e3;
-    background: url(../images/gradient3.png) repeat-x center bottom #000;
+    float:right;
+
+}
+.btn-big-green:hover {
+    color: #ffffff;
+
+    border: 1px solid transparent;
+    background: url(../images/gradient2.png) repeat-x center bottom #000;
 }
 .btn-big-green span {
     position: relative;
@@ -193,7 +197,7 @@ h6 {
     font-weight: normal;
     text-decoration: none;
     cursor: default;
-    line-height: 32px;
+    line-height: 20px;
     color: #303030;
     content: '\f054';
     right: 0;
@@ -531,7 +535,7 @@ nav {
 .sf-menu ul {
     display: none;
     min-width: 110px;
-    font: 300 12px/12px "Lato", sans-serif;
+    font: 450 18px/18px "Lato", sans-serif;
     position: absolute;
     top: 50px;
     left: 0;

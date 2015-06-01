@@ -102,7 +102,14 @@
                         <!-- End Item Project -->
                     </ul>
                 </section>
-
+            </div>
+            <div class="button-wrapper1 rigth">
+                <a class="btn-big-green wow fadeIn " data-wow-duration="1s"
+                   data-wow-delay="0.1s"
+                   href="#" onclick="muestra('<?php echo $lst[0]->oidser;?>','0');"> <span><?php if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')echo'All';
+                        else echo 'Ver Todas Las Tecnicas';
+                        ?></span>
+                </a>
             </div>
         </div>
     </div>

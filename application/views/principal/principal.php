@@ -13,9 +13,9 @@
 						<div class="wrapper2">
 							<div class="heading1 wow fadeIn" data-wow-duration="1s"
 								data-wow-delay="0.1s" id='tb'>
-								<h2>
+								<h3>
 									<?php echo $tb;?>
-								</h2>
+								</h3>
 							</div>
 							<?php
 							if ($lst == 0) {
@@ -51,7 +51,7 @@
                                         $tituloSerie = $ls->nombre_i;$desSerie = $ls->descrip_i;
                                     }
 									echo '
-									<div class="grid_4">
+									<div class="grid_2">
 									<div class="box1">
 									<h4 class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s"><a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">'.$tituloSerie.'</a></h4>
 									<a href="#primero"  onclick="muestra('.$ls->oidser.','.$tipoDatos.');">
@@ -81,14 +81,14 @@
 								}
 							}
 							?>
-							<div class="button-wrapper1">
+							<!--<div class="button-wrapper1">
 								<a class="btn-big-green wow fadeIn" data-wow-duration="1s"
 									data-wow-delay="0.1s"
 									href="<?php echo site_url("principal/consulta")?>"> <span><?php if(isset($_SESSION['idioma']) && $_SESSION['idioma']=='_i')echo'All';
                                         else echo 'Ver Todas Las Series';
                                         ?></span>
 								</a>
-							</div>
+							</div> !-->
 						</div>
 					</div>
 				</div>
